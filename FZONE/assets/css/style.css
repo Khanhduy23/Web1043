@@ -1,0 +1,306 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Arial, Helvetica, sans-serif   ;
+}
+body{
+    background-color: aliceblue;
+}
+header{
+    width: 100%;
+    height: 60px;
+    background-color: rgb(133, 55, 11);
+    position: relative;
+}
+/* Phổ biến */
+.color-header{
+    background-color: #0f1111 !important;
+}
+.zindex{
+    z-index: 2;
+}
+.container-header{
+    width: 100%;
+    height: 100%;
+    /* background-color: aquamarine; */
+    position: relative;
+}
+.container-header .logo-section{
+    position: absolute;
+    /* background-color: aqua; */
+    width: 15%;
+    max-width: 270px;
+
+}
+.container-header .logo-section img{
+    width: 90%;
+}
+.input-section{
+    width: 62%;
+    background-color: azure;
+    position: relative;
+    left: 170px;
+    float: left;
+}
+.search-section{
+    width: 100%;
+    height: 30px;
+    /* background-color: blueviolet; */
+    position: absolute;
+    top: 10px;
+}
+.input-section .search-input{
+    width: 100%;
+    height: 40px;
+    /* background-color: #7a470b; */
+    position: absolute;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.input-section .search-icon{
+    width: 40px;
+    background-color: rgb(243, 168, 71);
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+.search-input:focus + .search-icon {
+    color: #f7772e; /* Đổi màu biểu tượng khi input được focus */
+}
+.search-information{
+    background-color: aliceblue;
+    width: 25%;
+    height: 75%;
+    max-width: 1000px;
+    min-width: 400px;
+    position: absolute;
+    right: 10px;
+    border-radius: 10px;
+}
+.search-information .navbar{
+    background-color: aliceblue;
+    width: 100%;
+    height: 75%;
+    max-height: 100px;
+    text-align: center;
+    border-radius: 10px;
+}
+.search-information .nav-item{
+    display: inline-block;
+    line-height: 60px;
+}
+.search-information .nav-item a{
+    text-decoration: none;
+    color: white;
+    padding-left: 5px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.search-information .nav-item a:hover,
+.navbar1 .nav-item1 a:hover
+{
+    color: rgb(228, 154, 18);
+}
+.nav-item i{
+    padding: 5px;
+}
+nav{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(35, 47, 62);
+    font-family: inherit;
+}
+.navbar1 .nav-item1{
+    display: inline-block;
+}
+.navbar1 .nav-item1 a{
+    text-decoration: none;
+    color: white;
+    line-height: 50px;
+    padding-left: 10px;
+}
+.navbar1 a{
+    font-size: 14px;
+}
+.slider{
+    width: 100%;
+    /* background-color: yellow; */
+}
+.slider img{
+    width: 100%;
+}
+article{
+    width: 100%;
+    height: 2000px;
+    /* background-color: #225c9e; */
+    position: relative;
+}
+.container-product{
+    width: 100%;
+    height: 2500px;
+    min-width: 1500px;
+    max-width: 1500px;
+    /* background-color: #bdaea6; */
+    margin: auto;
+    position: relative;
+}
+.box-product1:hover , .box-product3 img:hover{
+    box-shadow: 0 0 5px rgb(196, 190, 190);
+    transform: scale(1.05); /* Phóng to box */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.box-product1{
+    width: calc(25% - 12px);
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgb(207, 206, 206);
+    border-radius: 5px;
+    float: left;
+    margin: 10px 0 10px 10px;
+}
+ .title1{
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+    /* background-color: aquamarine; */
+}
+.title2{
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-align: center;
+    /* background-color: aquamarine; */
+}
+.detail-box-product1{
+    width: 100%;
+    height: 361px;
+    /* background-color: rgb(152, 175, 175); */
+}
+.detail-box-product1 .box1{
+    width: 47%;
+    height: 107px;
+    /* background-color: #f7772e; */
+    float: left;
+    margin: 10px 0 50px 8px;
+}
+.box1 .name1 p{
+    padding-top: 10px;
+}
+.box1 img{
+    width: 100%;
+}
+.box1:hover, .box2:hover{
+    box-shadow: 0 0 5px rgb(126, 176, 203);
+}
+.more-content p , .more-content1 p{
+    padding: 10px;
+}
+.more-content a , .more-content1 a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+/* Gía của sản phẩm */
+.more-content1 .price{
+    font-size: 24px;
+    color: #7a470b;
+}
+/* Số mua sản phẩm */
+.more-content1 .note{
+    color: #ce5d1c;
+}
+.more-content a:hover , .more-content1 a:hover{
+    text-decoration: underline;
+    color: rgb(204, 150, 35);
+}
+.detail-box-product2{
+    width: 100%;
+    height: 361px;
+    /* background-color: rgb(152, 175, 175); */
+}
+.detail-box-product2 .box2{
+    width: 95%;
+    height: 275px;
+    background-color: #f7772e;
+    float: left;
+    margin: 10px 0 50px 8px;
+}
+.box2 img{
+    width: 100%;
+}
+.box4 img{
+    padding-left: 60px;
+    width: 75%;
+}
+.box-product3{
+    width: calc(100% - 20px);
+    height: 300px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgb(207, 206, 206);
+    border-radius: 5px;
+    float: left;
+    margin: 10px 0 0px 10px;
+}
+.detail-box-product3{
+    width: 100%;
+    height: 240px;
+    /* background-color: #92715f; */
+    padding: 20px;
+    display: flex;
+}
+.detail-box-product3 .box3{
+    width: 11%;
+    height: 200px;
+    /* background-color: #f7772e; */
+    padding-left: 12px;
+}
+footer{
+    width: 100%;
+    height: 300px;
+    background-color: rgb(65, 64, 64);
+    position: relative;
+    top: 300px;
+}
+.box-footer{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    /* background-color: rebeccapurple; */
+}
+.box-footer .ft{
+    display: inline-block;
+    margin: 50px;
+    padding-top: 25px;
+}
+.box-footer .ft a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    line-height: 30px;
+}
+.box-footer .ft a:hover{
+    text-decoration: underline;
+    color: rgb(207, 195, 186);
+}
+.box-footer h3{
+    padding-bottom: 10px;
+    color: rgb(221, 87, 9);
+    font-size: 20px;
+}
+.box-footer .ft i{
+    font-size: 30px;
+    padding: 10px;
+}
+.box-footer .ft i:hover{
+    color: #225c9e;
+}
+#yt:hover{
+    color: #9e2222;
+}
+

@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ .logo-section{
+    margin: auto;
+    width: 230px;
+    height: 120px;
+    /* background-color: #be5656; */
+ }
+ .logo-section img{
+    width: 100%;
+ }
+.wrapper{
+    border: 2px solid gainsboro;
+    width: 450px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 30px 40px;
+    margin: auto;
+    z-index: 10;
+}
+.wrapper h1{
+    font-size: 34px;
+    text-align: center;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    /* background-color: blueviolet; */
+    margin: 40px 0;
+}
+.input-box label{
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    padding-left: 10px;
+    padding-bottom: 2px;
+}
+.input-box input{
+    width: 100%;
+    height: 90%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 40px;
+    font-size: 16px;
+    /* color: aliceblue; */
+    padding: 10px 45px 10px 20px;
+}
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 100%; 
+    transform: translateY(-85%);
+    font-size: 18px;
+}
+.wrapper .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    /* trên , trái phải ,dưới */
+    margin: -15px 0 15px; 
+}
+.remember-forgot label input{
+    /* thay đổi màu checkbox */
+    accent-color: #be5656;
+    margin-right: 3px;
+}
+.remember-forgot a{
+    color: black;
+    text-decoration: none;
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background-color: rgb(247, 202, 0);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    font-size: 14px;
+}
+.wrapper .register-link{
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+.register-link p a{
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+}
+.register-link p a:hover{
+    text-decoration: underline;
+}
+footer{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: #fdfdfd;
+    border-top: 2px solid gainsboro;
+    margin-top: 20px;
+}
+.content-ft{
+    width: 50%;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    text-align: center;
+    margin-top: 25px;
+}
+.content-ft ul{
+    display: inline-block;
+}
+.thong-tin li{
+    list-style: none;
+}
+.thong-tin li a{
+    padding: 15px;
+    color: rgb(10, 58, 214);
+    text-decoration: none;
+    font-size: 14px;
+}
+.end{
+    padding-top: 10px;
+    opacity: 0.9;
+    font-size: 12px;
+}
