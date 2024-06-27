@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi diện tích</title>
+</head>
+<body>
+    <input type="text" id="squareMeters" placeholder="Nhập diện tích (m²)">
+    <input type="button" value="Chuyển đổi" onclick="convertArea()">
+    
+    <h2>Diện tích:</h2>
+    <p>Số mét vuông: <span id="m2"></span> m²</p>
+    <p>Số sào: <span id="sao"></span> sào</p>
+    <p>Số mẫu: <span id="mau"></span> mẫu</p>
+    <p>Số hecta: <span id="ha"></span> ha</p>
+    
+    <script>
+        function convertArea() {
+            let squareMeters = parseFloat(document.getElementById('squareMeters').value);
+            
+            if (isNaN(squareMeters) || squareMeters < 0) {
+                alert("Vui lòng nhập số hợp lệ và lớn hơn 0 cho diện tích.");
+                return;
+            }
+            
+            // Chuyển đổi
+            let sao = squareMeters / 1000;
+            let mau = squareMeters / 10000;
+            let ha = squareMeters / 10000;
+            
+            // Hiển thị kết quả
+            document.getElementById('m2').innerText = squareMeters;
+            document.getElementById('sao').innerText = sao.toFixed(2);
+            document.getElementById('mau').innerText = mau.toFixed(2);
+            document.getElementById('ha').innerText = ha.toFixed(2);
+        }
+    </script>
+</body>
+</html>

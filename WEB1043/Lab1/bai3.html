@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="cannang_input" placeholder="Nhập cân nặng">
+    <input type="text" name="" id="chieucao_input" placeholder="Nhập chiều cao">
+    <input type="button" value="Tính BMI" onclick="tinh()">
+    <h2>Chiều cao: <span id="chieucao"></span></h2>
+    <h2>Cân nặng: <span id="cannang"></span></h2>
+    <h2>Chỉ số BMI: <span id="bmi"></span></h2>
+    <script>
+        //input
+        function tinh(){
+            //Lấy giá trị từ input text
+            let chieucao = document.getElementById('chieucao_input').value;
+            let cannang = document.getElementById('cannang_input').value;
+            let bmi = cannang / Math.pow( chieucao, 2);
+        //output
+        //in giá trị ra màn hình
+        document.getElementById('chieucao').innerHTML = chieucao;
+        document.getElementById('cannang').innerHTML = cannang;
+        document.getElementById('bmi').innerHTML = bmi;
+        }
+    </script>
+</body>
+</html>

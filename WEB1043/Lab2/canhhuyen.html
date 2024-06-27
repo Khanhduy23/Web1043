@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Tính cạnh huyền của
+        tam giác bằng định lý Pythagorean.</h2>
+    <input type="text" name="" id="nhapa" placeholder="Nhập a">
+    <input type="text" name="" id="nhapb" placeholder="Nhập b">
+    <input type="button" value="Tính" onclick="tinh()">
+    <h2>a: <span id="a"></span></h2>
+    <h2>b: <span id="b"></span></h2>
+    <h2>Cạnh huyền là: <span id="c"></span></h2>
+    <script>
+        //input
+        function tinh(){
+            //Lấy giá trị từ input text
+            let a = document.getElementById('nhapa').value;
+            let b = document.getElementById('nhapb').value;
+            let c = Math.sqrt(a*a + b*b);
+            //output
+            //in giá trị ra màn hình
+        document.getElementById('a').innerHTML = a;
+        document.getElementById('b').innerHTML = b;
+        document.getElementById('c').innerHTML = c;
+        }
+    </script>
+</body>
+</html>
