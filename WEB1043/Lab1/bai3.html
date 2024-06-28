@@ -4,26 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        span{
+            font-weight: normal;
+        }
+    </style>
 </head>
 <body>
     <input type="text" name="" id="cannang_input" placeholder="Nhập cân nặng">
     <input type="text" name="" id="chieucao_input" placeholder="Nhập chiều cao">
     <input type="button" value="Tính BMI" onclick="tinh()">
-    <h2>Chiều cao: <span id="chieucao"></span></h2>
-    <h2>Cân nặng: <span id="cannang"></span></h2>
+    <h2>Chiều cao: <span id="chieucao"></span> cm</h2>
+    <h2>Cân nặng: <span id="cannang"></span> kg</h2>
     <h2>Chỉ số BMI: <span id="bmi"></span></h2>
     <script>
         //input
         function tinh(){
-            //Lấy giá trị từ input text
-            let chieucao = document.getElementById('chieucao_input').value;
-            let cannang = document.getElementById('cannang_input').value;
-            let bmi = cannang / Math.pow( chieucao, 2);
+            // Lấy giá trị từ input text và chuyển đổi sang số
+            let chieucao = parseFloat(document.getElementById('chieucao_input').value);
+            let cannang = parseFloat(document.getElementById('cannang_input').value);
+            let bmi = cannang / Math.pow(chieucao, 2);
         //output
-        //in giá trị ra màn hình
+
+        // Kiểm tra nếu dữ liệu nhập vào không phải là số
+            if(isNaN(chieucao) || isNaN(cannang)){
+                alert("Vui lòng nhập số vào các ô nhập liệu !");
+                return 0;
+            }
+
+        // Hiển thị kết quả cho người dùng
         document.getElementById('chieucao').innerHTML = chieucao;
         document.getElementById('cannang').innerHTML = cannang;
-        document.getElementById('bmi').innerHTML = bmi;
+        document.getElementById('bmi').innerHTML = bmi.toFixed(2); // Làm trong BMI đến 2 chữ thập phân
         }
     </script>
 </body>

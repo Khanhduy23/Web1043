@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate BMI</title>
+</head>
+<body>
+    <h2>Calculate your BMI</h2>
+    <label for="weight">Weight (kg)</label>
+    <input type="number" name="weight" id="weight" step="0.1"><br><br>
+
+    <label for="height">Height (cm)</label>
+    <input type="number" name="height" id="height" step="0.1"><br><br>
+
+    <button onclick="calculateBMI()">Calculate</button>
+
+    <h3 id="result"></h3>
+    
+    <script>
+        function calculateBMI(){
+            //Lấy giá trị cân nặng và chiều cào từ người dùng
+            let weight = parseFloat(document.getElementById("weight").value);
+            let height = parseFloat(document.getElementById("height").value);
+
+            //Chuyển đổi chiều cao từ cm sang mét
+            height = height / 100;
+
+            //Tính chỉ số BMI
+            let bmi = weight / (height * height);
+            
+            //Làm tròn chỉ số BMI đến chữ số thập phân thứ 2
+            bmi = bmi.toFixed(2);
+
+            //Hiển thị kết quả cho người dùng
+            document.getElementById("result").innerText = "Your BMI is: " + bmi;
+
+            //Đánh giá kết quả 
+            let evaluation = " ";
+            if(bmi < 18.5 ){
+                evaluation = "You are underweight.";
+            }else if(bmi >= 18.5 && bmi <= 25){
+                evaluation = "You have a normal weight.";
+            }else if(bmi >= 25 && bmi <= 30){
+                evaluation = "You are overweight.";
+            }else{
+                evaluation = "You are obese.";
+            }
+            document.getElementById("result").innerText += " " + evaluation;
+        }
+    </script>
+</body>
+</html>

@@ -7,26 +7,30 @@
 </head>
 <body>
     <script>
+        //Khai báo và gán giá trị cho biến text 1, 2
         let text1 = "Lập trình",
             text2 = 'JavaScript';
-        let text3 = text1 + ''+text2;
-        let text4 = `${text1} ${text2}`;
-        let text5 = text1.concat(' ',text2);
+
+        //Khai báo biến text 3,4
+        let text3 = text1 + ''+text2; // Gộp chuỗi
+        let text4 = `${text1} ${text2}`; // Sử dụng template literals để ghép chuỗi 
+
+        // Cách khai báo biến text5
+        let text5 = text1.concat(' ',text2); // Sử dụng phương thức concat
+
+        // Khai báo biến số x và y
         let x = 6;
         let y = 5.1234;
-        console.log(text3, text2, text5);
-        // let text6 = "Let's go! + 'text2' + "!";
-        //2 dấu nháy giống nhau không được đặt kế nhau
-        console.log(text2.length);
-        console.log(text3.toUpperCase());
-        console.log(text3.toLowerCase());
-        console.log(isNaN(x));
-        //Kiểm tra giá trị có phải là chuỗi hay không
-        console.log(y.toFixed(2));
-        //y = 5.12
-        console.log(y.toPrecision(2));
-        //y = 5.1
-        console.log(text3.substring(0,3));
+
+        // In các giá trị ra console
+        console.log(text3, text2, text5); // In ra giá trị của text3, text2, text5
+        console.log(text2.length); // In ra độ dài của chuỗi text2
+        console.log(text3.toUpperCase()); // Chuyển đổi text3 thành chữ in hoa và in ra
+        console.log(text3.toLowerCase()); // Chuyển đổi text3 thành chữ thường và in ra
+        console.log(isNaN(x)); // Kiểm tra xem x có phải là NaN hay không
+        console.log(y.toFixed(2)); // Làm tròn y đến 2 chữ số thập phân và in ra
+        console.log(y.toPrecision(2)); // Làm tròn y thành số có 2 chữ số chính xác và in ra
+        console.log(text3.substring(0, 3)); // Lấy ra một phần của text3 từ vị trí 0 đến 3 và in ra
     </script>
 </body>
 </html>
