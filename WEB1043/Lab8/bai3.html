@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media with Controls</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        video, audio {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .controls {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .controls button, .controls input[type="range"] {
+            margin: 5px;
+        }
+        .controls input[type="range"] {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Media Controls</h1>
+
+        <h2>Video</h2>
+        <video id="video" controls>
+            <source src="mini.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video tag.
+        </video>
+        <div class="controls">
+            <button onclick="playPause('video')">Play/Pause</button>
+            <button onclick="stop('video')">Stop</button>
+            <button onclick="replay('video')">Replay</button>
+            <button onclick="changeVolume('video', -0.1)">Volume -</button>
+            <button onclick="changeVolume('video', 0.1)">Volume +</button>
+            <button onclick="toggleMute('video')">Mute/Unmute</button>
+        </div>
+
+        <h2>Audio</h2>
+        <audio id="audio" controls>
+            <source src="audio.mp3" type="audio/mp3">
+            Trình duyệt của bạn không hỗ trợ audio tag.
+        </audio>
+        <div class="controls">
+            <button onclick="playPause('audio')">Play/Pause</button>
+            <button onclick="stop('audio')">Stop</button>
+            <button onclick="replay('audio')">Replay</button>
+            <button onclick="changeVolume('audio', -0.1)">Volume -</button>
+            <button onclick="changeVolume('audio', 0.1)">Volume +</button>
+            <button onclick="toggleMute('audio')">Mute/Unmute</button>
+        </div>
+    </div>
+
+    <script>
+        function playPause(mediaId) {
+            var media = document.getElementById(mediaId);
+            if (media.paused) {
+                media.play();
+            } else {
+                media.pause();
+            }
+        }
+
+        function stop(mediaId) {
+            var media = document.getElementById(mediaId);
+            media.pause();
+            media.currentTime = 0;
+        }
+
+        function replay(mediaId) {
+            var media = document.getElementById(mediaId);
+            media.currentTime = 0;
+            media.play();
+        }
+
+        function changeVolume(mediaId, change) {
+            var media = document.getElementById(mediaId);
+            media.volume = Math.max(0, Math.min(1, media.volume + change));
+        }
+
+        function toggleMute(mediaId) {
+            var media = document.getElementById(mediaId);
+            media.muted = !media.muted;
+        }
+    </script>
+</body>
+</html>

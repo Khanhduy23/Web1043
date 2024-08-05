@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        h3 {
+            margin: 0 auto;
+            text-align: center;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            background-color: rgb(228, 224, 224);
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .menu {
+            background-color: #333;
+            padding: 10px;
+            color: #fff;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .menu i {
+            margin: 0 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 50px;
+        }
+        .menu i:hover {
+            color: #f0f0f0;
+        }
+        .row {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .col {
+            width: calc(25% - 10px);
+            height: 300px;
+            background-color: aliceblue;
+            float: left;
+            margin: 5px;
+            text-align: center;
+        }
+        #numCart {
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="sp.html"><i class='fas fa-home'></i></a>
+        <a href="cart.html"> <i class='fas fa-shopping-cart'></i></a>
+        <i class='fas fa-user'></i>
+        <a href=""><i class='fas fa-search'></i></a>
+    </div>
+    <h3>GIỎ HÀNG</h3>
+    <table>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Chức năng</th>
+        </tr>
+        <tbody id="cart"></tbody>
+    </table>
+    <h3>Tổng tiền: <span id="sum">0</span></h3>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function showcart() {
+            let kq = '';
+            let tong = 0;
+            for (let i = 0; i < cart.length; i++) {
+                kq += `
+                    <tr>
+                        <td>${cart[i].name}</td>
+                        <td>${cart[i].price}</td>
+                        <td><input type="number" value="${cart[i].quantity}" onchange="updateQuantity(${i}, this.value)"></td>
+                        <td><button onclick="removeItem(${i})">Xóa</button></td>
+                    </tr>
+                `;  
+                tong += cart[i].price * cart[i].quantity;
+            }
+            document.getElementById('cart').innerHTML = kq;
+            document.getElementById('sum').innerHTML = tong;
+        }
+
+        function updateQuantity(index, value) {
+            // Cập nhật số lượng trong giỏ hàng
+            cart[index].quantity = parseInt(value, 10) || 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showcart();  // Cập nhật hiển thị giỏ hàng và tổng tiền
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showcart();
+        }
+
+        showcart();
+    </script>
+</body>
+</html>

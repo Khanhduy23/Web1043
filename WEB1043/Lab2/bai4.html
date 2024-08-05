@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check</title>
+</head>
+<body>
+    <h1>Sửa đổi ví dụ mảng</h1>
+    <p>Kiểm tra bảng điều khiển để biết kết quả mảng đã sửa đổi.</p>
+    <script>
+        // Khởi tạo mảng ban đầu
+        const theList = ['Lauren', 'Kevin', true, 35, null, undefined, ['one', 'two']];
+
+        // Xoá phần tử đầu tiên
+        theList.shift();
+
+        // Xoá phần tử cuối cùng
+        theList.pop();
+
+        // Thêm 'FIRST' vào đầu mảng
+        theList.unshift('FIRST');
+
+        // Thêm 'middle' vào vị trí thứ 3 của mảng
+        theList.splice(2, 0, 'middle');
+
+        // Thêm 'hello world' vào vị trí thứ 4 của mảng
+        theList.splice(3, 0, 'hello world');
+
+        // Thêm 'LAST' vào cuối mảng
+        theList.push('LAST');
+
+        // Xuất kết quả
+        console.log(theList);
+    </script>
+</body>
+</html>

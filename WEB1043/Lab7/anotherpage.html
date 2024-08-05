@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dữ Liệu Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 0 20px;
+        }
+
+        span {
+            font-weight: bold;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            p {
+                font-size: 16px;
+            }
+
+            span {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Dữ Liệu Form</h1>
+    <p>Sản phẩm: <span id="product-name"></span></p>
+    <p>Giá: <span id="product-price"></span></p>
+    <p>Loại: <span id="product-type"></span></p>
+    <p>Địa chỉ giao hàng: <span id="delivery-address"></span></p>
+
+    <script>
+        //Khi trang được tải xong, mã JavaScript trong hàm sẽ thực thi.
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            //Lấy giá trị của tham số product từ URL và gán nó vào phần tử có id="product-name".
+            document.getElementById('product-name').textContent = urlParams.get('product');
+            document.getElementById('product-price').textContent = urlParams.get('price');
+            document.getElementById('product-type').textContent = urlParams.get('type');
+            document.getElementById('delivery-address').textContent = urlParams.get('address');
+        }
+    </script>
+</body>
+</html>

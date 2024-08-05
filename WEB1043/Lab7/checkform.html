@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" onsubmit="return kiemtra()">
+        <p><label>Sản phẩm</label><input autofocus onkeyup="Anerr()" placeholder="Nhập tên sản phẩm" name="" id="tensp"></p>
+        <div class="err" id="errTen"></div>
+        <p><label>Loại</label>
+            <select id="Loại">
+                <option value="">Chọn loại sản phẩm</option>
+                <option value="DT">Điện thoại</option>
+                <option value="MT">Máy tính</option>
+            </select>
+        </p>
+        <div class="err" id="errLoai"></div>
+        <p><label>Đơn Giá</label><input placeholder="Nhập giá tiền"  id="giasp" onkeyup="Anerr()"></p>
+        <div class="err" id="errGia"></div>
+        <p><label>Nơi nhận hàng</label>
+            <input type="radio" name="diachi" onclick="hienthigia(false)" onmouseup="Anerr()">Nội thành
+            <input type="radio" name="diachi" onclick="hienthigia(true)" onmouseup="Anerr()">Ngoại thành
+        </p>
+        <div class="err" id="errDiachi"></div>
+        <p id="phi"><label>Phí vận chuyển</label> <input name="" id="phi_vc" value="100000"></p>
+        <div class="kq"></div>
+        <p><label></label> <button type="submit" id="btn" disabled>Đặt mua</button></p>
+    </form>
+</body>
+</html>
+<script src="checkform.js"></script>

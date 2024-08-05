@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let dssp = ['Iphone', 'Samsung', 'Xiaomi', 'Oppo', 'Vivo'];
+        let dssp3 = new Array('Iphone', 'Samsung', 'Xiaomi', 'Oppo', 'Vivo');
+        //Thêm phần tử vào cuối mảng
+        dssp.put('Galaxy','Nokia')
+        //Xóa phần từ cuối mảng
+        dssp.pop();
+        //Thêm xóa phần từ ở vị trí bất kỳ
+        dssp.splice(2,0,'Huawei');
+        //Nối 2 mảng
+        let dssp4= dssp.concat(dssp3)
+        //Toán tử
+        //phép toán : + = * / % ++ --
+        //so sách: > < > == === != !==
+        //logic: && || !
+        //toan tu 3 ngôi
+        // điều kiện ? true : false
+        let kq = (diem>5)?"dau":"rot";
+        let a= "5";
+        let b= 6;
+        let c3 = a===b
+        //=> false
+        let c4 = a==b
+        //=>true
+
+        // ++a a++
+        let c = b + ++a *2
+        //a = a+1
+        //Thực hiện phép toán c
+        let c1 = b + a++ *2
+        //Thực hiện phép toán c
+        // sau đó a = a+1
+        //leght = 5
+        //index = 0, 1, 2, 3, 4 -> vị trí của phần tử trong mảng
+        // for (let index = 0; i < dssp.length; index++) {
+        //     console.log(dssp[index]);
+                    //index = 0 => 0 < 5 => true => log phần tử ở vị trí index 0 => log ra Iphone
+                    //index = 1 => 1 < 5 => true => log phần tử ở vị trí index 1 => log ra Samsung
+                    //index = 2 => 2 < 5 => true => log phần tử ở vị trí index 2 => log ra Xiaomi
+                    // .....
+                    //index = 5 => 5 < 5 =>false => kết thúc vòng lặp
+        // }
+        dssp.forEach(item=>{
+            console.log(item);
+        });
+        
+        // for(const x of/in dssp){
+        //     console.log(x);
+        // }
+        let dssp2 = [
+            ['Iphone',10],
+            //=> index = 0
+            ['Samsung',20],
+            //=> index = 1
+            ['Xiaomi',30],
+            //=> index = 2
+            ['Oppo',40],
+            //=> index = 3
+            ['Vivo',50],
+            //=> index = 4
+        ]
+        //dssp2 leght: 5
+        for(let i = 0; i < dssp2.length; i++){
+            //dssp[0] = ['Iphone', 10]
+            for(let j = 0; j < dssp2[i].length; j++){
+                //for(let j = ; j < dspp2[0].lenght; j++)
+                console.log(dssp2[i][0])
+            }
+        }
+        //while, do .. while
+        //Nhập điểu nếu điểm < 0 hoặc điểm > 10 thì nhập lại
+    </script>
+</body>
+</html>

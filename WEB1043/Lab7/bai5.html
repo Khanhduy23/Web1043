@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .radio-label {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #phi_vc {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ffdddd;
+            border: 1px solid #ff9999;
+            border-radius: 4px;
+            color: #d9534f;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return kiemTra()">
+        <label for="san_pham">Sản phẩm:</label>
+        <input type="text" id="san_pham" name="san_pham" placeholder="Nhập tên sản phẩm"><br>
+        
+        <label for="don_gia">Đơn giá:</label>
+        <input type="text" id="don_gia" name="don_gia" placeholder="Nhập đơn giá"><br>
+        
+        <label for="loai">Loại:</label>
+        <select id="loai" name="loai">
+            <option value="">Chọn loại...</option>
+            <option value="loai1">Loại 1</option>
+            <option value="loai2">Loại 2</option>
+        </select><br>
+        
+        <label>Nơi nhận hàng:</label>
+        <div class="radio-label">
+            <input type="radio" name="dia_chi" value="noi_thanh" onclick="hienThi(false)"> Nội thành
+        </div>
+        <div class="radio-label">
+            <input type="radio" name="dia_chi" value="ngoai_thanh" onclick="hienThi(true)"> Ngoại thành
+        </div><br>
+        
+        <div id="phi_vc">Phí vận chuyển: 10000 VNĐ</div>
+        
+        <input type="submit" value="Đặt mua">
+    </form>
+
+    <script>
+        // Hàm hiển thị hoặc ẩn phí vận chuyển
+        function hienThi(visible) {
+            var phiVC = document.getElementById("phi_vc");
+            phiVC.style.display = visible ? "block" : "none";
+        }
+
+        // Hàm kiểm tra dữ liệu hợp lệ
+        function kiemTra() {
+            var sanPham = document.getElementById("san_pham");
+            var donGia = document.getElementById("don_gia");
+            var loai = document.getElementById("loai");
+            var radios = document.getElementsByName("dia_chi");
+
+            if (sanPham.value.trim() === "") {
+                alert("Vui lòng nhập tên sản phẩm!");
+                return false;
+            }
+
+            if (donGia.value.trim() === "" || isNaN(donGia.value) || parseFloat(donGia.value) <= 0) {
+                alert("Vui lòng nhập đơn giá là số dương!");
+                return false;
+            }
+
+            if (loai.value === "") {
+                alert("Vui lòng chọn loại sản phẩm!");
+                return false;
+            }
+
+            if (!radios[0].checked && !radios[1].checked) {
+                alert("Vui lòng chọn nơi nhận hàng!");
+                return false;
+            }
+
+            alert("Chúc mừng bạn đã nhập đúng!");
+            return true;
+        }
+    </script>
+</body>
+</html>

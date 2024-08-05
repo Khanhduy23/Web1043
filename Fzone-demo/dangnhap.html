@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="asset/css/styledn.css">
+    <link rel="stylesheet" href="asset/css/stylesp.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header></header>
+    <div class="logo-section">
+        <a href="index.html"><img src="asset/img/Logo2024.png" alt="Logo"></a>
+    </div>
+    <div class="wrapper">
+        <form id="loginForm" action="" method="post">
+            <h1>ĐĂNG NHẬP</h1>
+            <div class="input-box">
+                <label for="user">Tài khoản</label>
+                <input type="text" name="user" id="user">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="input-box">
+                <label for="pass">Mật khẩu</label>
+                <input type="password" name="pass" id="pass">
+                <i class="fa-solid fa-eye" id="togglePassword"></i>
+            </div>
+            <div class="remember-forgot">
+                <label for="remember"><input type="checkbox" name="remember" id="remember">Nhớ mật khẩu</label>
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+            <button type="submit" class="btn">Đăng nhập</button>
+            <div class="register-link">
+                <p>Không có tài khoản? <a href="dangky.html">Đăng ký</a></p>
+            </div>
+            <div id="error-message" style="color: red;"></div>
+        </form>
+        <script>
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#pass');
+            const form = document.querySelector('#loginForm');
+            const errorMessage = document.querySelector('#error-message');
+
+            togglePassword.addEventListener('mouseover', function () {
+                password.setAttribute('type', 'text');
+            });
+
+            togglePassword.addEventListener('mouseout', function () {
+                password.setAttribute('type', 'password');
+            });
+
+            form.addEventListener('submit', function (event) {
+                const user = document.querySelector('#user').value;
+                const pass = document.querySelector('#pass').value;
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const phonePattern = /^[0-9]{10,11}$/;
+
+                if (!user || !pass) {
+                    errorMessage.textContent = 'Vui lòng nhập đầy đủ thông tin!';
+                    event.preventDefault(); // Ngăn chặn gửi form
+                    return;
+                }
+
+                if (!emailPattern.test(user) && !phonePattern.test(user)) {
+                    errorMessage.textContent = 'Vui lòng nhập email hoặc số điện thoại hợp lệ!';
+                    event.preventDefault(); // Ngăn chặn gửi form
+                } else {
+                    errorMessage.textContent = ''; // Xóa thông báo lỗi nếu thông tin hợp lệ
+                }
+            });
+        </script>
+    </div>
+    <footer></footer>
+    <script src="asset/js/ichf.js"></script>
+</body>
+</html>

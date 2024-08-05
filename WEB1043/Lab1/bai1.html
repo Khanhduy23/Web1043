@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            font-weight: normal;
+        }
+        h1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let lop = "WB20201",
+            monHoc = "Lập trình JavaScript",
+            hocKy = "Học kỳ 1";
+
+        // let a = prompt('Nhập cạnh a: '),    
+        //     b = prompt('Nhập cạnh b: '),
+            // Tính lũy thừa bậc 2 của biến a và b
+            // sqrt tính căn bậc hai của tổng 2 biến a và b
+            // c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+
+        // Nhập chiều cao (nhập với đơn vị là met), cân nặng tính chỉ số BMI cân nặng chia bình phương chiều cao(đổi đơn vị thành cm)
+        let chieuCao = prompt('Nhập chiều cao: '),
+            canNang = prompt('Nhập cân nặng: '),
+            bmi = canNang / Math.pow( chieuCao, 2);
+
+    </script>
+
+    <h1>Thông tin lớp học</h1>
+    <h2>Lớp: <span>
+        <script>
+            document.write(lop);
+        </script>
+    </span></h2>
+    <h2>Môn học: <span>
+        <script>
+            document.write(monHoc);
+        </script>
+    </span></h2>
+    <h2>Học kỳ: <span>
+        <script>
+            document.write(hocKy);
+        </script>
+    </span></h2>
+
+    <h1>Tính cạnh huyền của tam giác</h1>
+    <!-- Tính cạnh huyền của tam giác -->
+    <!-- input -->
+     <h2>Cạnh a: <span>
+        <script>
+            document.write(a);
+        </script>
+     </span></h2>
+     <h2>Cạnh b: <span>
+        <script>
+            document.write(b);
+        </script>
+     </span></h2>
+    <!-- output -->
+    <h2>Độ dài của cạnh huyền của một tam giác vuông : <span>
+        <script>
+            document.write(c);
+        </script>
+     </span></h2>
+     <h1>Tính chỉ số BMI</h1>
+     <h2>Chiều cao: <span>
+        <script>
+            document.write(chieuCao);
+        </script>
+     </span></h2>
+     <h2>Cân nặng: <span>
+        <script>
+            document.write(canNang);
+        </script>
+     </span></h2>
+     <h2>BMI: <span>
+        <script>
+            document.write(bmi);
+        </script>
+     </span></h2>
+</body>
+</html>

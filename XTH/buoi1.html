@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #hv{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+        }
+        #xanh, #do, #hong{
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            float: left;
+            margin: 10px;
+        }
+        #xanh{
+            background-color: blue;
+        }
+        #do{
+            background-color: red;
+        }
+        #hong{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="hv"></div>
+    <div id="xanh" onmouseover="setcolor(1)" onmouseout="resetcolor()"></div>
+    <div id="do" onmouseover="setcolor(2)" onmouseout="resetcolor()"></div>
+    <div id="hong" onmouseover="setcolor(3)" onmouseout="resetcolor()"></div>
+    <!-- <button onmouseover="setsize(4)">L</button>
+    <button onmouseover="setsize(5)">XL</button>
+    <button onmouseover="setsize(6)">reset</button> -->
+    <button>L</button>
+    <button>XL</button><br><br><br>
+    <input type="number" name="" id="" placeholder="Nhập số thứ 1"><br>
+    <input type="number" name="" id="" placeholder="Nhập số thứ 2"><br>
+    <input type="number" name="" id="" placeholder="Nhập số thứ 3"><br>
+    <input type="number" name="" id="" placeholder="Nhập số thứ 4"><br>
+    <input type="number" name="" id="" placeholder="Nhập số thứ 5"><br>
+    <button onclick="result()">Kết quả</button>
+    <div id="kq"></div>
+    <script>
+        let arr = [];
+        function result() {
+            let inp = document.getElementsByTagName('input')
+            for (let i = 0; i < inp.length; i++) {
+                arr.push(inp[i].value)                
+            }
+            let tong = sum();
+
+            tich = 1;
+            arr.forEach(i=>{
+                tich = tich * parseInt(i);
+            })
+            document.getElementById('kq').innerHTML = `<h2>Tổng là: <span>${tong}</span></h2>
+            <h2>Tích là: <span>${tich}</span></h2>`;
+        }
+        function sum() {
+            let tong = 0;
+            for (let i = 0; i < arr.length; i++) {
+                tong += parseInt(arr[i]) ;
+                //Number, parseInt, parseFloat
+            }
+            return tong;
+        }
+
+
+
+
+
+
+
+
+        let a = 10;
+        var b = 'abc';
+        function setcolor(x) {
+            switch (x) {
+                case 1:
+                    document.getElementById('hv').style.backgroundColor = 'blue';
+                    break;
+                case 2:
+                    document.getElementById('hv').style.backgroundColor = 'red';
+                    break;
+                case 3:
+                    document.getElementById('hv').style.backgroundColor = 'pink';
+                    break;
+                default:
+                    break;
+            }
+        }
+        function resetcolor() {
+            document.getElementById('hv').style.backgroundColor = 'white';
+        }
+        let btn = document.getElementsByTagName('button');
+        console.log(btn);
+        btn[0].addEventListener('click',function(){
+            document.getElementById('hv').style.width = '300px';
+            document.getElementById('hv').style.height = '300px';
+        })
+        btn[1].addEventListener('click',function(){
+            document.getElementById('hv').style.width = '400px';
+            document.getElementById('hv').style.height = '400px';
+        })
+        //Let, var, const
+        // const: hằng số
+        //let: phạm vi cục bộ trong block
+        //var: phạm vi cục bộ trong function
+        // function test() {
+        //     var i = 0;
+        //     for (let a = 0; a < array.length; a++) {
+        //         const element = array[a];
+                
+        //     }
+        // }
+        // function setsize(y) {
+        //     switch (y) {
+        //         case 4:
+        //             document.getElementById('hv').style.width = '250px';
+        //             break;
+        //         case 5:
+        //             document.getElementById('hv').style.width = '300px';
+        //             break;
+        //         case 6:
+        //             document.getElementById('hv').style.width = '200px';
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // }
+    </script>
+    <!-- DOM -->
+     <!-- Gọi element -->
+      <script>
+        //Trả về 1 element
+        // document.getElementById('test')
+        // document.querySelector('#test')
+        // document.querySelector('.test2')
+        // =>Phần tử đầu tiên
+        //Trả về mảng element
+        // document.getElementsByClassName('test2')
+        // document.getElementsByTagName('div')
+        // document.querySelectorAll('.test2')
+        //event
+        // onclick,onmouse(con trỏ chuột), onkey(bàn phím), onfocus, onblur
+      </script>
+</body>
+</html>

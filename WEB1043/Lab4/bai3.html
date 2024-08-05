@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiển thị thời gian</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        #clock {
+            background: #fff;
+            padding: 20px 40px;
+            /* border-radius: 8px; */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 2em;
+            font-weight: bold;
+        }
+        p{
+            background: #f0eded;
+            padding: 20px 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 2em;
+            font-weight: bold;  
+        }
+    </style>
+</head>
+<body>
+    <p>Thời gian: </p>
+    <div id="clock"></div>
+    <script>
+        function updateTime() {
+            //Lấy thời gian hiện tại
+            var now = new Date();
+            var h = now.getHours();
+            var m = now.getMinutes();
+            var s = now.getSeconds();
+            // Thêm số 0 vào trước các giá trị nhỏ hơn 10 để đảm bảo có hai chữ số
+            //Nếu điều kiện đúng (giờ nhỏ hơn 10), thêm số 0 vào trước giá trị của h (tạo thành chuỗi '0' + h).
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            //output
+            document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+        }
+        updateTime(); //Cập nhật lại thời gian khi tải lại trang
+        // Thiết lập hàm updateTime để chạy mỗi giây
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tù tì</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trò chơi kéo búa bao</h1>
+    <div>
+        <!-- (0 là Búa, 1 là búa, 2 là Kéo). -->
+        <input type="button" value="Rock" onclick="getValue(0);"/>
+        <input type="button" value="Paper" onclick="getValue(1);"/>
+        <input type="button" value="Scissors" onclick="getValue(2);"/>
+    </div>
+    <div class="result" id="result"></div>
+
+    <script>
+        var arr = ['Rock', 'Paper', 'Scissors'];
+        //getValue được gọi khi người dùng nhấp vào nút. Hàm này nhận 1 tham số c đại diện cho lựa chọn của người dùng
+        function getValue(c) {
+            //Phương thức Math.floor() làm tròn một số DOWN thành số nguyên gần nhất.
+            var s = Math.floor(Math.random() * 3);
+            //Lấy lựa chọn tương ứng với số khi người dùng chọn
+            var userChoice = arr[c];
+            //Lấy lự chọn tương ứng với số
+            var computerChoice = arr[s];
+
+            var result = '';
+            if (c === s) {
+                result = 'Equal';
+            } else if ((c === 0 && s === 2) || (c === 1 && s === 0) || (c === 2 && s === 1)) {
+                result = 'You Win!';
+            } else {
+                result = 'Computer Wins!';
+            }
+
+            document.getElementById('result').innerHTML = 
+                'You chose: ' + userChoice + '<br>' +
+                'Computer chose: ' + computerChoice + '<br>' +
+                result;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Object
+        // Thuộc tính và phương thức
+        let car = new Object();
+        console.log(typeof(car));
+        //Thuộc tính - property
+        car.color = "red";
+        car.carname = "BMW";
+        console.log(car.color);
+        //Phương thức - method
+        car.run = function(){
+            console.log('Xe đang chạy');
+        }
+        function carRun() {
+            console.log('Car run');
+        }
+        carRun();
+        car.run();
+        //Literal object
+        let sv = {
+            name: "Nguyen Văn A",
+            age: 20,
+            inHoTen: function(){
+                console.log('Họ tên: '+ this.name);
+            }
+        }
+        sv.inHoTen();
+        console.log(sv.name);
+        //Tạo khuôn mẫu
+        function sinhVien(name , age){
+            //Khởi tạo thuộc tính
+            this.Name = name;
+            this.Age = age;
+            this.inName = function(){
+                console.log('Họ tên: ' + this.Name);
+            }
+        }
+        let sv1 = new sinhVien('Nguyen Van B',21);
+        let sv2 = new sinhVien('Nguyen Van C',22);
+        sv1.inName();
+        let arr= [
+            {name: 'Nguyen Van A',age: 20},
+            {name: 'Nguyen Van B',age: 21},
+            {name: 'Nguyen Van C',age: 22},
+        ];
+            console.log(arr[1].name);
+    </script>
+</body>
+</html>

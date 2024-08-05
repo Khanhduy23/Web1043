@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: auto;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            background-color: #f0f0f0;
+        }
+        .slide {
+            position: relative;
+            width: 100%;
+            /* max-width: 800px; */
+            overflow: hidden;
+        }
+        img {
+            width: 100%;
+            display: block;
+        }
+        .radio {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .radio input[type="radio"] {
+            display: none;
+        }
+        .radio label {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            border: 2px solid #333;
+            cursor: pointer;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .radio input[type="radio"]:checked + label {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <img src="background1.jpg" alt="banner">
+        <div class="radio">
+            <input type="radio" name="slide" id="slide1" checked>
+            <label for="slide1"></label>
+            <input type="radio" name="slide" id="slide2">
+            <label for="slide2"></label>
+            <input type="radio" name="slide" id="slide3">
+            <label for="slide3"></label>
+            <input type="radio" name="slide" id="slide4">
+            <label for="slide4"></label>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let imgSlide = document.querySelector('.slide img');
+    let radios = document.querySelectorAll('.radio input');
+    const arrImg = ['background.jpg', 'background1.jpg', 'background3.jpg', 'background.jpg'];
+
+    radios.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            imgSlide.src = arrImg[index];
+        });
+    });
+
+    // Set the initial image based on the checked radio button
+    document.querySelector('input[name="slide"]:checked').dispatchEvent(new Event('change'));
+</script>

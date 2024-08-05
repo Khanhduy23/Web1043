@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #location {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geolocation</h1>
+        <button onclick="getLocation()">Lấy Vị trí</button>
+        <div id="location"></div>
+    </div>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("location").innerHTML = "Trình duyệt không hỗ trợ Geolocation.";
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("location").innerHTML =
+                "Vĩ độ: " + position.coords.latitude + "<br>Kinh độ: " + position.coords.longitude;
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("location").innerHTML = "Người dùng từ chối yêu cầu vị trí.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("location").innerHTML = "Vị trí không khả dụng.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("location").innerHTML = "Yêu cầu vị trí hết thời gian chờ.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("location").innerHTML = "Đã xảy ra lỗi không xác định.";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

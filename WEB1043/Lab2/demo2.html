@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Tiền Phòng Khách Sạn</title>
+    <style>
+        body{
+            background-color: #f5ebeb;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #6d9cf3;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 class="center">Tính Tiền Phòng Khách Sạn</h1>
+    <table>
+        <tr>
+            <th>Hạng Phòng</th>
+            <th>Gía Tiền</th>
+            <th>Số Đêm</th>
+            <th>Tổng Tiền</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="loaiphong" id="loaiphong" onchange="gia()">
+                    <option value="0">Chọn hàng phòng</option>
+                    <option value="500000">Phòng tiêu chuẩn - 500,000 VND/Đêm</option>
+                    <option value="1000000">Phòng VIP - 1,000,000 VND/Đêm</option>
+                    <option value="1500000">Phòng cao cấp - 1,500,000 VND/Đêm</option>
+                </select>
+            </td>
+            <td id="gia">0</td>
+            <td><input type="number" name="dem" id="dem" value="1" min="1" onchange="capnhattongtien()"></td>
+            <td id="tongtien">0</td>
+        </tr>
+    </table>
+    <script>
+        function gia() {
+            const gia = document.getElementById('gia');
+            const loaiphong = document.getElementById('loaiphong');
+            //Cập nhật giá khi người dùng chọn loại phòng
+            gia.innerHTML = loaiphong.value;
+            capnhattongtien();
+        }
+        function capnhattongtien() {
+            const gia = document.getElementById('gia').innerHTML;
+            const dem = document.getElementById('dem').value;
+            const tongtien = document.getElementById('tongtien');
+            //Tính tổng tiền và thay đổi phần tử id trong phần tử HTML
+            tongtien.innerHTML = dem * gia;
+        }
+    </script>
+</body>
+</html>

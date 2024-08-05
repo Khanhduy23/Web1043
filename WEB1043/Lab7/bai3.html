@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.875em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const product = document.getElementById('product');
+            const price = document.getElementById('price');
+            const type = document.getElementById('type');
+            const address = document.getElementsByName('address');
+
+            // Xóa thông báo lỗi cũ
+            //Đặt .error = rỗng 
+            document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+            let valid = true;
+
+            if (product.value.trim() === '') {
+                document.getElementById('product-error').textContent = 'Vui lòng nhập tên sản phẩm!';
+                valid = false;
+            }
+
+            if (isNaN(price.value) || parseFloat(price.value) <= 0) {
+                document.getElementById('price-error').textContent = 'Vui lòng nhập một số dương cho giá!';
+                valid = false;
+            }
+
+            if (type.value.trim() === '') {
+                document.getElementById('type-error').textContent = 'Vui lòng chọn loại sản phẩm!';
+                valid = false;
+            }
+
+            if (!address[0].checked && !address[1].checked) {
+                document.getElementById('address-error').textContent = 'Vui lòng chọn địa chỉ giao hàng!';
+                valid = false;
+            }
+
+            if (valid) {
+                alert('Gửi form thành công!');
+            }
+
+            return valid;
+        }
+    </script>
+</head>
+<body>
+    <form action="anotherpage.html" method="get" onsubmit="return validateForm()">
+        <label for="product">Sản phẩm:</label>
+        <input type="text" id="product" name="product">
+        <div id="product-error" class="error"></div>
+        
+        <label for="price">Giá:</label>
+        <input type="text" id="price" name="price">
+        <div id="price-error" class="error"></div>
+        
+        <label for="type">Loại:</label>
+        <select id="type" name="type">
+            <option value="">Chọn...</option>
+            <option value="type1">Loại 1</option>
+            <option value="type2">Loại 2</option>
+        </select>
+        <div id="type-error" class="error"></div>
+        
+        <label>Địa chỉ giao hàng:</label>
+        <input type="radio" name="address" value="local"> Nội địa
+        <input type="radio" name="address" value="remote"> Quốc tế
+        <div id="address-error" class="error"></div>
+        
+        <input type="submit" value="Gửi">
+    </form>
+</body>
+</html>

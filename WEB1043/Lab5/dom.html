@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="ao">
+        <p class="loaiao">ÁO NÀO</p>
+        <p class="loaiao">ÁO KHOÁC</p>
+    </div>
+    <script>
+        let ao = document.getElementById('ao');
+        //fistchild, lastchild, children, nodechilds
+        let loaiao = ao.firstChild;
+        // x.document.getElementById
+        // x.document.getQuerySelector('.loaiao')
+
+        // document.getElementsByClassName('loaiao')
+        // document.getElementsByTagName('p')
+        // document.querySelectorAll('.loaiao')
+        console.log(loaiao.nextSibling.nodeName);
+        console.log(loaiao.nextSibling.childNodes[0].nodeValue)
+        console.log(ao.parentElement.nodeName)
+        console.log(loaiao.parentElement.nodeName)
+        let ElementP = document.getElementsByTagName('p');
+        for (let i = 0; i < ElementP.length; i++) {
+            console.log(ElementP[i].innerHTML);            
+        }
+        let newElement = document.createElement('p');
+        document.getElementById('ao').appendChild(newElement)
+        // newElement.innerHTML = 'Bánh mì';
+        newElement.style.color ='Red';
+        let newText = document.createTextNode('bánh bao');
+        newElement.appendChild(newText);
+    </script>
+</body>
+</html>

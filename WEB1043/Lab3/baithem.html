@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Random Numbers</title>
+  <style>
+    body {
+      background-color: aliceblue;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+    }
+    p {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tạo số ngẫu nhiên</h1>
+    <p id="ketQua"></p>
+  </div>
+
+  <script>
+    // Hàm kiểm tra xem n có phải là số chính phương không
+    function laSoChinhPhuong(n) {
+      return Math.sqrt(n) % 1 === 0;
+    }
+
+    // Hàm kiểm tra xem n có phải là số nguyên tố không
+    function laSoNguyenTo(n) {
+      if (n <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+
+    // Hàm tính trung bình cộng của các số chính phương trong mảng
+    function tinhTrungBinhSoChinhPhuong(mang) {
+      let tong = 0;
+      let dem = 0;
+      for (let i = 0; i < mang.length; i++) {
+        if (laSoChinhPhuong(mang[i])) {
+          tong += mang[i];
+          dem++;
+        }
+      }
+      return dem === 0 ? 0 : tong / dem;
+    }
+
+    // Hàm tính tổng bình phương của các số nguyên tố trong mảng
+    function tinhTongBinhPhuongSoNguyenTo(mang) {
+      let tongBinhPhuong = 0;
+      for (let i = 0; i < mang.length; i++) {
+        if (laSoNguyenTo(mang[i])) {
+          tongBinhPhuong += mang[i] * mang[i];
+        }
+      }
+      return tongBinhPhuong;
+    }
+
+    // Hàm tạo và hiển thị kết quả
+    function taoVaHienThiKetQua() {
+      const soNgauNhien1 = Math.floor(Math.random() * 50) + 1;
+      const soNgauNhien2 = Math.floor(Math.random() * 50) + 1;
+      const soBatDau = Math.min(soNgauNhien1, soNgauNhien2);
+
+      const mangMoi = [];
+      for (let i = soBatDau; i <= 50; i++) {
+        mangMoi.push(i);
+      }
+
+      const trungBinhSoChinhPhuong = tinhTrungBinhSoChinhPhuong(mangMoi);
+      const tongBinhPhuongSoNguyenTo = tinhTongBinhPhuongSoNguyenTo(mangMoi);
+      const soNguyenTo = mangMoi.filter(laSoNguyenTo);
+      const soChinhPhuong = mangMoi.filter(laSoChinhPhuong);
+
+      document.getElementById('ketQua').innerHTML = 
+        `Số ngẫu nhiên 1: ${soNgauNhien1}<br>` +
+        `Số ngẫu nhiên 2: ${soNgauNhien2}<br>` +
+        `Mảng mới: [${mangMoi.join(', ')}]<br>` +
+        `Số nguyên tố: [${soNguyenTo.join(', ')}]<br>` +
+        `Số chính phương: [${soChinhPhuong.join(', ')}]<br>` +
+        `Trung bình các số chính phương trong mảng: ${trungBinhSoChinhPhuong}<br>` +
+        `Tổng bình phương các số nguyên tố trong mảng: ${tongBinhPhuongSoNguyenTo}<br>`;
+    }
+
+    window.onload = taoVaHienThiKetQua;
+  </script>
+</body>
+</html>

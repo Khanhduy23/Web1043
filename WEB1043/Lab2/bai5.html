@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đoán số</title>
+</head>
+<body>
+    <h1>Đoán số</h1>
+    <p>Nhập số từ 10 - 15 để đoán số bí mật</p>
+    <button onclick="doanso()">Đoán số</button>
+    <script>
+        function doanso() {
+             // Description
+                // The Math.round() method rounds a number to the nearest integer.
+                // 2.49 will be rounded down (2), and 2.5 will be rounded up (3).
+            var x = 10 + Math.round(5 * Math.random());
+            //Người dùng nhập số từ bàn phím
+            var a = prompt("Nhập số");
+            //Kiểm tra
+            if(a == x){
+                alert("Chúc mừng bạn đã đoán đúng");
+            }else if( a > x){
+                alert("Gía trị của bạn lớn hơn số bí mật");
+            }else{
+                alert("Gía trị của bạn nhỏ hơn số bí mật");
+            }
+        }
+    </script>
+</body>
+</html>

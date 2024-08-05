@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sinh viên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        form input[type="text"],
+        form input[type="button"],
+        form select {
+            width: calc(100% - 10px);
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        form input[type="button"] {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        form input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quản lý sinh viên</h1>
+        <form>
+            <input type="text" id="name" placeholder="Nhập họ tên" required>
+            <input type="text" id="mssv" placeholder="Nhập MSSV" required>
+            <input type="text" id="diem1" placeholder="Nhập điểm bài 1" required>
+            <input type="text" id="diem2" placeholder="Nhập điểm bài 2" required>
+            <input type="text" id="diem3" placeholder="Nhập điểm bài 3" required>
+            <select id="lophoc">
+                <option value="A">Lớp A</option>
+                <option value="B">Lớp B</option>
+                <option value="C">Lớp C</option>
+            </select>
+            <input type="button" value="Thêm sinh viên" onclick="hienthi()">
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Họ tên</th>
+                    <th>MSSV</th>
+                    <th>Điểm 1</th>
+                    <th>Điểm 2</th>
+                    <th>Điểm 3</th>
+                    <th>Lớp học</th>
+                    <th>Điểm trung bình</th>
+                    <th>Xếp loại</th>
+                    <th>Kết quả</th>
+                </tr>
+            </thead>
+            <tbody id="ht">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let dssv = [];
+
+        function hienthi() {
+            //Trim loại bỏ khoảng trắng
+            let hoten = document.getElementById('name').value.trim();
+            let mssv = document.getElementById('mssv').value.trim();
+            let diem1 = parseFloat(document.getElementById('diem1').value);
+            let diem2 = parseFloat(document.getElementById('diem2').value);
+            let diem3 = parseFloat(document.getElementById('diem3').value);
+            let lophoc = document.getElementById('lophoc').value;
+
+            if (hoten === '' || mssv === '' || isNaN(diem1) || isNaN(diem2) || isNaN(diem3)) {
+                alert('Vui lòng nhập đầy đủ thông tin và đúng định dạng cho điểm!');
+                return;
+            }
+            // Tạo đối tượng sinh viên
+            //tên thuộc tính : biến
+            const sv = {
+                hoten: hoten,
+                mssv: mssv,
+                diem1: diem1,
+                diem2: diem2,
+                diem3: diem3,
+                lophoc: lophoc,
+                
+                tinhDiemTrungBinh: function() {
+                    return ((this.diem1 + this.diem2 + this.diem3) / 3).toFixed(2);
+                },
+                xepLoai: function() {
+                    let diemTB = this.tinhDiemTrungBinh();
+                    if (diemTB >= 8.0) {
+                        return 'Giỏi';
+                    } else if (diemTB >= 6.5) {
+                        return 'Khá';
+                    } else if (diemTB >= 5.0) {
+                        return 'Trung bình';
+                    } else {
+                        return 'Yếu';
+                    }
+                },
+                ketQua: function() {
+                    let diemTB = this.tinhDiemTrungBinh();
+                    return diemTB >= 5.0 ? 'Đậu' : 'Rớt';
+                },
+                hienthi: function() {
+                    return `
+                        <tr>
+                            <td>${this.hoten}</td>
+                            <td>${this.mssv}</td>
+                            <td>${this.diem1}</td>
+                            <td>${this.diem2}</td>
+                            <td>${this.diem3}</td>
+                            <td>${this.lophoc}</td>
+                            <td>${this.tinhDiemTrungBinh()}</td>
+                            <td>${this.xepLoai()}</td>
+                            <td>${this.ketQua()}</td>
+                        </tr>
+                    `;
+                }
+            };
+
+            dssv.push(sv);
+            hienthiDanhSach();
+        }
+
+        function hienthiDanhSach() {
+            // Sắp xếp danh sách sinh viên theo tên
+            //phương thức so sánh hai chuỗi trong miền địa phương hiện tại.
+            dssv.sort((a, b) => a.hoten.localeCompare(b.hoten));
+
+            let kq = '';
+            for (let i = 0; i < dssv.length; i++) {
+                kq += dssv[i].hienthi();
+            }
+            document.getElementById('ht').innerHTML = kq;
+        }
+    </script>
+</body>
+</html>

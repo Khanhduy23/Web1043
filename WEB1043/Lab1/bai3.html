@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="cannang_input" placeholder="Nhập cân nặng">
+    <input type="text" name="" id="chieucao_input" placeholder="Nhập chiều cao">
+    <input type="button" value="Tính BMI" onclick="tinh()">
+    <h2>Chiều cao: <span id="chieucao"></span> cm</h2>
+    <h2>Cân nặng: <span id="cannang"></span> kg</h2>
+    <h2>Chỉ số BMI: <span id="bmi"></span></h2>
+    <script>
+        //input
+        function tinh(){
+            // Lấy giá trị từ input text và chuyển đổi sang số
+            //Phương thức ParsFloat() phân tích một giá trị dưới dạng chuỗi và trả về số đầu tiên.
+            //A number NaN if no number is found.
+            let chieucao = parseFloat(document.getElementById('chieucao_input').value);
+            let cannang = parseFloat(document.getElementById('cannang_input').value);
+            //The Math.pow() method returns the value of x to the power of y (xy).
+            let bmi = cannang / Math.pow(chieucao, 2);
+
+        //output
+        //Đoạn mã của bạn đang thực hiện xác thực đầu vào để đảm bảo rằng người dùng nhập các giá trị số cho chieucao (chiều cao) và cannang (cân nặng). 
+        // Nếu một trong hai giá trị này không phải là số (isNaN trả về true), nó sẽ hiển thị thông báo cảnh báo và trả về 0 để thoát khỏi hàm.
+            if(isNaN(chieucao) || isNaN(cannang)){
+                alert("Vui lòng nhập số vào các ô nhập liệu !");
+                return 0;
+            }
+
+        // Hiển thị kết quả cho người dùng
+        document.getElementById('chieucao').innerHTML = chieucao;
+        document.getElementById('cannang').innerHTML = cannang;
+        document.getElementById('bmi').innerHTML = bmi.toFixed(2); // Làm tròn chỉ số BMI đến 2 chữ thập phân
+        if (condition) {
+            
+        }
+        
+        }
+    </script>
+</body>
+</html>

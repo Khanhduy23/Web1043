@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            /* max-width: 800px;  */
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: slide 5s infinite;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 400px;
+            display: block;
+        }
+
+        .slider i {
+            position: absolute;
+            font-size: 50px;
+            color: #a7a7a7;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10;
+        }
+
+        .fa-less-than {
+            left: 15px;
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+
+        .fa-greater-than {
+            right: 15px;
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .fa-less-than, .fa-greater-than {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <img src="background1.jpg" alt="Background Image">
+            <i class="fa-solid fa-less-than" aria-label="Previous Slide"></i>
+            <i class="fa-solid fa-greater-than" aria-label="Next Slide" ></i>
+        </div>
+    </div>
+    <div class="btn-container">
+        <button><</button>
+        <button><<</button>
+        <button>></button>
+        <button>>></button>
+    </div>
+</body>
+</html>
+<script>
+    // Chọn phần tử img trong .slider đây là nơi cập nhật thuộc tính src
+    let imgSlider = document.querySelector('.slider img');
+    // Chọn tất cả các phần từ i
+    let icons = document.querySelectorAll('.slider i');
+    let imgArr = ['background.jpg','background1.jpg','background3.jpg',];
+    // Chỉ mục index = 0 đồng nghĩa lấy ảnh của vị trí ban đầu là 0
+    let index = 0;
+    function updateSlider() {
+            const offset = -index * 100; // Slide to the left by the width of one image
+            slider.style.transform = `translateX(${offset}%)`;
+        }
+    function next(){
+        // Di chuyển tới hình ảnh tiếp theo bằng cách tăng chỉ số
+        index++;
+        // Nếu chỉ số index vượt qua độ dài của mảng thì index sẽ trả về 0
+        if(index >= imgArr.length){
+            index = 0;
+        }
+        imgSlider.src =`${imgArr[index]}`;
+        updateSlider();
+    }
+    function last(){
+        // Di chuyển về hình ảnh trước đó bằng cách giảm chỉ số.
+        index--;
+        if(index < 0){
+            index = imgArr.length -1;
+        }
+        imgSlider.src =`${imgArr[index]}`;
+        updateSlider();
+    }
+    function display(){
+        if(icons[])
+    }
+    icons[0].addEventListener('click', last);
+    icons[1].addEventListener('click',next);
+    setInterval("next()",2000);
+</script>
+
+<!-- BÀI THÊM KHI CLICK ẢNH THÌ TỌA ĐỘ X THAY ĐỔI LÀM CHO HÌNH MƯỢT MÀ KHI ĐỔI, SỬ DỤNG JS -->
+ <!-- khi đưa trỏ chuột vào thì icon hiển thị khi đưa ra thì mất -->
+ 

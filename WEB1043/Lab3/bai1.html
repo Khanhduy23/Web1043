@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Toán</title>
+</head>
+<body>
+    <h1>Thực Hiện Các Phép Tính Số Học</h1>
+    <button onclick="caculate()">Thực hiện phép toán</button>
+    <script>
+        function caculate() {
+            //Nhập vào hai toán hạng và một toán tử
+            var a = parseFloat(prompt("Nhập toán hạng a: "));
+            var b = parseFloat(prompt("Nhập toán hạng b: "));
+            var c = prompt("Nhập toán tử: ");
+            //Sử dụng switch case để phân tích toán tử phù hợp để thực hiện phép tính 
+            switch (c) {
+                case '+':
+                    var kq = a + b;
+                    alert("Tổng là: " + kq);
+                    break;
+                case '-':
+                    var kq = a - b;
+                    alert("Hiệu là: " + kq);
+                    break;
+                case '*':
+                case 'x':
+                    var kq = a * b;
+                    alert("Tích là: " + kq);
+                    break;
+                case '/':
+                case ':':
+                    if(b !== 0){
+                        var kq = a / b;
+                        alert("Thương là: " + kq);
+                    }else{
+                        alert("Không thể chia cho 0 , Vui lòng nhập lại");
+                    }
+                    break;
+                default:
+                    alert(c +" " + "Không phải là toán tử hợp lệ, vui lòng nhập lại");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

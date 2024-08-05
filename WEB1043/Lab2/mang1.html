@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let nhapDiem = prompt();
+        // while (nhapDiem < 0 || nhapDiem > 10) {
+        //     nhapDiem = prompt('Nhập lại điểm');
+        // }
+        // document.write('Điểm của bạn là: ' + nhapDiem);
+        // let diem2;
+        // do{
+        //     diem2= prompt();
+        // }while (diem2 < 0 || diem2 > 10);
+        //jumb: continue, break, return
+        //in ra các số từ 1 - 10 trừ các số chia hết cho 2
+        for (let i = 1; i <= 10; i++) {
+            if(i %2 == 0){
+                document.write(",");
+                break;
+                // continue;
+            }
+            document.write(i + " ");
+        }
+    </script>
+</body>
+</html>

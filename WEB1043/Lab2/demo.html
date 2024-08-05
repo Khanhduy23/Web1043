@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính toán</title>
+</head>
+<body>
+    <input type="number" name="so1" id="so1"><br>
+    <input type="number" name="so2" id="so2"><br>
+    <select name="" id="pt">
+        <option value="+">+</option>
+        <option value="-">-</option>
+    </select><br>
+    <input type="button" value="Tính toán" onclick="tinhtoan()"><br>
+    <h2>Kết quả phép tính là: <span id="kq"></span></h2>
+    <script>
+        function tinhtoan() {
+            // Lấy giá trị từ input
+            let a = Number(document.getElementById('so1').value);
+            let b = Number(document.getElementById('so2').value);
+            let c = document.getElementById('pt').value;
+            let kq = 0;
+
+            switch (c) {
+                case '+':
+                    kq = a + b;
+                    break;
+                case '-':
+                    kq = a - b;
+                    break;
+            }
+
+            // Output
+            document.getElementById('kq').innerHTML = kq;
+        }
+    </script>
+</body>
+</html>

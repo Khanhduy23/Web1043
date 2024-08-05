@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 45</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons">
+        <button onclick="openWindow()">Mở cửa sổ mới</button>
+        <button onclick="closeWindow()">Đóng cửa sổ mới</button>
+        <button onclick="checkWindow()">Kiểm tra xem cửa sổ mới đã đóng hay chưa</button>
+    </div>
+    <script>
+        //Biến lưu trữ tham chiếu đến cửa sổ mới
+        let newWindow;
+        function openWindow() {
+            let width = 150;
+            let height = 150;
+            // Kiểm tra trình duyệt có phải là IE hay không
+            //Nếu chuỗi này chưa "MSIE" hoặc documentMode = > IE
+            if (navigator.userAgent.indexOf('MSIE') !== -1 || !!document.documentMode === true) { // Nếu là IE Internet Explorer 
+                width = 100;
+                height = 100;
+            }
+            newWindow = window.open('', '', `toolbar=yes,menubar=yes,width=${width},height=${height}`);
+            //Có 3 tham số (URL = "", Tên = "", Các thông số cửa sổ)
+        }
+        function closeWindow() {
+            if(newWindow && !newWindow.closed){
+                newWindow.closed();
+            }
+        }
+        function checkWindow() {
+            if(newWindow){
+                if(newWindow.closed){
+                    alert('Cửa sổ mới đã được đóng.');
+                }else{
+                    alert('Cửa số mới vẫn đang mở.');
+                }
+            }else{
+                alert('Chưa mở cửa số nào.')
+            }
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Định dạng CSS như cũ */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h3>Danh Mục Hàng Hóa</h3>
+    <table>
+        <tr>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Chức năng</th>
+        </tr>
+        <tr>
+            <td>Iphone 10</td>
+            <td>$8000</td>
+            <td><button onclick="add(this)">Thêm</button></td>
+        </tr>
+        <tr>
+            <td>Iphone 11</td>
+            <td>$8000</td>
+            <td><button onclick="add(this)">Thêm</button></td>
+        </tr>
+        <tr>
+            <td>Iphone 12</td>
+            <td>$8000</td>
+            <td><button onclick="add(this)">Thêm</button></td>
+        </tr>
+    </table>
+    <h3>Thông Tin Giỏ Hàng</h3>
+    <table id="cart">
+        <tr>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Chức năng</th>
+        </tr>
+    </table>
+    <p id="empty-cart-message" style="display: none;">Giỏ hàng rỗng</p>
+    <h3>Tổng tiền <span id="sum">0</span></h3>
+    <script>
+        // onclick add this để gán một sự kiện click cho nút. Khi nút được nhấn hàm add trong js sẽ được gọi và this sẽ truyền tham chiếu
+        // đến phần từ của nút mà sự kiện xảy ra
+        function add(button) {
+            //Tạo bản sao của thẻ tr và lấy các dữ liệu 
+            //Lấy toàn bộ tr chứa toàn bộ thông tin của sản phẩm. cloneNode tạo ra bản sao của tr
+            let tr = button.parentElement.parentElement.cloneNode(true);
+            //Lấy sản phẩm và giá
+            let name = tr.children[0].innerText;
+            let price = tr.children[1].innerText;
+            //Thay đổi nút "Thêm" thành nút "Xóa"
+            let btnXoa = tr.getElementsByTagName('button')[0];
+            btnXoa.innerText = "Xóa";
+            btnXoa.setAttribute('onclick', 'deleteCart(this)'); //This ở đây là tham chiếu đến nút xóa mà người dùng nhấp vào
+
+            //Thay đổi giá của sản phẩm thành giá thực tế
+            // tr.children[1].innerText = price; // Nó sẽ cần thiết khi nếu có giá khuyến mãi / giá ship
+
+            //Thêm cột số lượng vào giỏ hàng
+            let quatityCell = document.createElement('td');
+            quatityCell.innerHTML = '<input type="number" value="1" min="1" onchange="tinhTong()">';
+            //element.insertBefore(new, existing)
+            tr.insertBefore(quatityCell, btnXoa.parentElement);
+            //Thêm sản phẩm vào giỏ hàng
+            document.getElementById('cart').appendChild(tr);
+            //Tính tổng tiền
+            tinhTong();
+        }
+        function deleteCart(button) {
+            //Xóa sản phẩm trong giỏ hàng
+            let tr = button.parentElement.parentElement;
+            document.getElementById('cart').removeChild(tr);
+            tinhTong();
+            //Tính tổng tiền lại
+        }
+        function tinhTong() {
+            let tong = 0;
+            let rows = document.getElementById('cart').getElementsByTagName('tr');
+            //  Thường thì hàng đầu tiên (đầu tiên) là tiêu đề bảng, vì vậy việc xử lý dữ liệu sẽ bắt đầu từ hàng thứ hai.
+            for (let i = 1; i < rows.length; i++) {
+                //Lấy tất cả các ô <td> trong hàng hiện tại.
+                let cells = rows[i].getElementsByTagName('td');
+                //Lấy tấy cả giá sản phẩm từ ô thứ hai của hàng hiện tại
+                let price = cells[1].innerText;
+                //Lấy số lượng sản phẩm từ ô thứ ba 
+                let quantity = cells[2].getElementsByTagName('input')[0].value;
+                //Xóa ký tự $ và dấu phẩy để chuyển đổi thành số thực
+                price = parseFloat(price.replace('$','').replace(',',''));
+                quantity = parseFloat(quantity);
+
+                //Tính tổng tiền
+                tong +=price * quantity;
+            }
+            //Hiển thị Tổng tiền
+            document.getElementById('sum').innerText = '$' + tong.toLocaleString();
+
+                // Kiểm tra giỏ hàng có rỗng không
+                let cart = document.getElementById('cart');
+                let emptyCartMessage = document.getElementById('empty-cart-message');
+                if (cart.rows.length <= 1) { // Nếu chỉ có dòng tiêu đề
+                    emptyCartMessage.style.display = 'block';
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                }
+            
+        }
+    </script>
+</body>
+</html>

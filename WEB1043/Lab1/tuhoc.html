@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="chieucao"></div>
+    <script>
+        // console.log() is a method in JavaScript that outputs a message to the web console. 
+        // The message can be a string, number, array, object, or any other data type.
+        // Here are some common uses of console.log():
+        // Debugging: To print variable values and check the flow of execution in your code.
+        let x = 5;
+        console.log(x); //Outputs: 5
+        //Logging Information: To log informational messages.
+        console.log('This is a long massage');
+        //Inspecting Objects and Arrays: To inspect the structure and contents of objects and arrays.
+        let user = {name: 'Duy', age: 21};
+        console.log(user);
+        //Conditional Logging: To log messages based (dựa trên) on certain (chắc chắn, nhất định) conditions (điều kiện).
+        let isLoggedIn = true;
+            if (isLoggedIn) {
+                console.log('User is logged in');
+            } else {
+                console.log('User is not logged in');
+            }
+        //Example Usage
+        console.log('Hello, World!'); // Outputs: Hello, World!
+        let a = 10;
+        let b = 20;
+        console.log(a + b); // Outputs: 30
+        console.log({ a, b }); // Outputs: { a: 10, b: 20 }
+        //By using console.log(), you can gain insight into what your code is doing at any given point, making it an essential tool for development and debugging in JavaScript.
+        //Bằng cách sử dụng console.log(), bạn có thể hiểu rõ hơn về hoạt động của mã tại bất kỳ thời điểm nào, biến nó thành một công cụ thiết yếu để phát triển và gỡ lỗi trong JavaScript.
+    </script>
+    <script>
+        // function greetUser(name) {
+        //     alert('Hello, ' + name + '!');
+        //     }
+
+        //     greetUser('Alice'); // Displays an alert dialog with the message "Hello, Alice!"
+        var chieucao = "Hello, World!";
+        //document.getElementById('chieucao'): This part selects the HTML element with the ID chieucao.
+        //.innerHTML = chieucao: This part sets the inner HTML content of the selected element to the value of the JavaScript variable chieucao.
+            document.getElementById('chieucao').innerHTML = chieucao;
+
+    </script>
+</body>
+</html>

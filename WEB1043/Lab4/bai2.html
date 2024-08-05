@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiện thị thông tin sinh viên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #hienthi {
+            margin-top: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="sv.hienthi()">Hiển thị</button>
+        <div id="hienthi">
+
+        </div>
+    </div>
+    <script>
+        //Tạo đối tượng sv để lưu trữ thông tin sinh viên
+        let sv = new Object();
+        //Thuộc tính hoten của đối tượng sv được gán giá trị từ input của người dùng
+        sv.hoten = prompt("Nhập họ tên");
+
+        //Yêu cầu nhập điểm cho đến khi nhập đúng
+        do{
+            //Thuộc tính diem của đối tượng sv đc gán giá trị từ input của người dùng và chuyển đổi sang số thực
+            sv.diem = parseFloat(prompt('Nhập điểm'));
+        }while(isNaN(sv.diem) || sv.diem < 0 || sv.diem > 10);
+        //Vòng lặp sẽ tiếp tục yêu cầu người dùng nhập lại
+
+        // Thuộc tính xeploai ban đầu được đặt là chuỗi trống
+        sv.xeploai = '';
+
+        //Phương thức hiển thị của đổi tượng sv để hiện thị thông tin sinh viên
+        sv.hienthi = function(){
+            //Kiểm tra điều kiện để gán giá trị cho thuộc tính xeploai
+            // Sử dụng `this` để truy cập thuộc tính `diem` của đối tượng `sv`
+            if(this.diem >= 8){
+                this.xeploai = 'Gioi';
+            }else if(this.diem >= 5){
+                this.xeploai= 'Khá';
+            }else{
+                this.xeploai='Yếu';
+            }
+            document.getElementById('hienthi').innerHTML =
+            `
+                <p>Họ tên: ${this.hoten}</p>
+                <p>Điểm: ${this.diem}</p>
+                <p>Xếp loại: ${this.xeploai}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

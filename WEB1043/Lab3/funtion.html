@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Nhập 2 số bất kỳ tính tổng mảng -->
+    <p><input type="number" id="soa"></p>
+    <p><input type="number" id="sob"></p>
+    <button onclick="viewResult()">Tính toán</button>
+    <div id="ketqua"></div>
+    <script>
+        function sum(arr) {
+            let tong = 0;
+            for (let i = 0; i < arr.length; i++) {
+                tong += Number(arr[i]);
+            }
+            return tong;
+        }
+
+        function viewResult(){
+            let soa = parseInt(document.getElementById('soa').value);
+            let sob = parseInt(document.getElementById('sob').value);
+            let arr = [];
+
+            for (let i = Number(soa); i <= Number(sob); i++){
+                arr.push(i);
+            }
+
+            let tong = sum(arr);
+            let ht = `<h2>Mảng là: <span>${arr.join(", ")}</span></h2>
+            <h2>Tổng là: <span>${tong}</span></h2>`;
+            document.getElementById('ketqua').innerHTML = ht;
+        }
+    </script>
+</body>
+</html>

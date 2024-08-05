@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển ảnh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        img {
+            height: 500px;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            background-color: #003d80;
+        }
+    </style>
+</head>
+<body>
+    <img id="anh" src="img/0.jpg" alt="">
+    <hr>
+    <button onclick="first()">First</button>
+    <button onclick="next()">Next</button>
+    <button onclick="prev()">Prev</button>
+    <button onclick="last()">Last</button>
+    <script>
+        var images = [];
+        for (let i = 0; i < 6; i++) {
+            images[i] = new Image();
+            images[i].src = "img/" + i + ".jpg";
+        }
+        var index = 0;
+
+        function updateImage() {
+            var anh = document.getElementById("anh");
+            anh.src = images[index].src;
+        }
+
+        function first() {
+            index = 0;
+            updateImage();
+        }
+
+        function last() {
+            index = images.length - 1;
+            updateImage();
+        }
+
+        function next() {
+            index++;
+            if (index >= images.length) {
+                //Tăng chỉ số hình ảnh. Nếu vượt qua số lượng hình ảnh, đặt chỉ số về 0.
+                index = 0;
+            }
+            updateImage();
+        }
+
+        function prev() {
+            index--;
+            if (index < 0) {
+                index = images.length - 1;
+            }
+            updateImage();
+        }
+    </script>
+</body>
+</html>

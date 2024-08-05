@@ -1,0 +1,57 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bảng Cửu Chương</title>
+        <style>
+            body{
+                text-align: center;
+                background-color: rgb(242, 244, 247);
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 8px;
+                text-align: center;
+            }
+            th{
+                background-color: rgb(217, 221, 224);
+            }
+        </style>
+    </head>
+    <!-- Sự kiện onload xảy ra khi một đối tượng đã được tải. -->
+    <body onload="bangcuuchuong()">
+        <h1>Bảng Cửu Chương</h1>
+        <div id="hienthi">
+
+        </div>
+        <script>
+            function bangcuuchuong() {
+                //Khỏi tạo hàng đầu tiên
+                let tableContent = "<table><tr>"
+                //Hiển hiện tiêu để bảng cửu chương
+                for (let i = 1; i <= 10; i++) {
+                    tableContent += `<th>Bảng ${i}</th>`;
+                }
+                tableContent +="</tr>" //Đóng hàng tiêu đề
+                //Hiện thị nội dung
+                for (let i = 1; i <= 10; i++) {
+                    tableContent += "<tr>"
+                        for (let j = 1; j <= 10; j++) {
+                            tableContent += `<td>${i} x ${j} = ${i * j}</td>`;
+                        }
+                    tableContent += "</tr>";
+                }
+                //Đóng bản
+                tableContent +="</table>";
+                document.getElementById('hienthi').innerHTML = tableContent;
+            }
+        </script>
+    </body>
+    </html>

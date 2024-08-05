@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Dùng Enter di chuyển qua các Input</h1>
+        <form action="" id="inputForm">
+              <input type="text" class="input" id="input1">
+              <input type="text" class="input" id="input2">
+              <input type="text" class="input" id="input3">
+              <input type="text" class="input" id="input4">
+              <input type="text" class="input" id="input5">
+        </form>
+  </div>
+  
+  <script>
+        //Lấy tất cả ô nhập dữ liệu 
+        const inputs = document.querySelectorAll('.input');
+        //Duyệt qua từng ô liệu
+        inputs.forEach((input, index) => {
+            //Thêm sự kiện keyup
+              input.addEventListener('keyup', function(event) {
+                //Kiểm tra nếu phím Enter được nhấn:
+                    if(event.keyCode === 13 && index < inputs.length - 1) {
+                        //Chuyển tiêu điểm sang ô nhập liệu tiếp theo:
+                          inputs[index + 1].focus();
+                    }
+              });
+        }
+        );
+  </script>
+</body>
+</html>

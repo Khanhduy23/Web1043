@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h3 {
+            margin: 10px 0;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        hr {
+            margin: 20px 0;
+        }
+        .info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label dataPrice="19000000">Iphone 12 Pro Max</label>
+        <input type="number" name="quantity" class="quantity" min="1" placeholder="Nhập số lượng">
+        <label dataPrice="18000000">Iphone 11 Pro Max</label>
+        <input type="number" name="quantity" class="quantity" min="1" placeholder="Nhập số lượng">
+        <label dataPrice="17000000">Iphone 9 Pro Max</label>
+        <input type="number" name="quantity" class="quantity" min="1" placeholder="Nhập số lượng">
+        <label dataPrice="16000000">Iphone 8 Pro Max</label>
+        <input type="number" name="quantity" class="quantity" min="1" placeholder="Nhập số lượng">
+        <label dataPrice="15000000">Iphone 7 Pro Max</label>
+        <input type="number" name="quantity" class="quantity" min="1" placeholder="Nhập số lượng">
+        <button id="btn">Calculate</button>
+        <hr>
+        <div class="info">
+            <h1>Thông tin sản phẩm</h1>
+            <h3>Tên sản phẩm: <span id="proname"></span></h3>
+            <h3>Tổng tiền: <span id="sum"></span></h3>
+        </div>
+    </div>
+    <script>
+        // Lắng nghe sự kiện, khi click hàm callback bên trong sẽ được thực thi
+        document.getElementById('btn').addEventListener('click',function(){
+            let total = 0;
+            // Lấy tất cả các phần từ label |( mỗi phần tử đại diện cho một sản phẩm) vào biến 
+            let products = document.querySelectorAll('label');
+
+            //Lấy tất cả các phần từ input với class quantity 
+            let quantities = document.querySelectorAll('.quantity');
+
+            let productNames = [];
+            //products là một NodeList chứa tất cả các phần tử <label> từ tài liệu HTML.
+                //product đại diện cho phần tử hiện tại trong mảng, trong trường hợp này phần từ label đại diện cho 1 sản phẩm
+            products.forEach((product, index) =>{
+                let price = parseInt(product.getAttribute('dataPrice'));
+                let quantity = parseInt(quantities[index].value);
+                    if (quantity > 0) {
+                        // product để lấy tên sản phẩm từ phần tử <label> và lưu vào biến productName để hiển thị hoặc xử lý tiếp.
+                        let productName = product.innerText;
+                        let subtotal = quantity * price;
+                        total += subtotal;
+                        
+                        productNames.push(productName);
+                    }
+            });
+            document.getElementById('proname').innerText = productNames.join(', ');
+            document.getElementById('sum').innerText = total.toLocaleString();
+        });
+       
+    </script>
+</body>
+</html>

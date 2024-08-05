@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop</title>
+    <style>
+        #drag-container {
+            width: 300px;
+            height: 300px;
+            border: 2px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+        #drag-box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div id="drag-container">
+        <div id="drag-box" draggable="true"></div>
+    </div>
+
+    <script>
+        const dragBox = document.getElementById('drag-box');
+         const dragContainer = document.getElementById('drag-container');
+        let offsetX, offsetY;
+
+    dragBox.addEventListener('dragstart', (e) => {
+        offsetX = e.clientX - dragBox.getBoundingClientRect().left;
+        offsetY = e.clientY - dragBox.getBoundingClientRect().top;
+    });
+
+    dragContainer.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+
+    dragContainer.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const containerRect = dragContainer.getBoundingClientRect();
+        const boxRect = dragBox.getBoundingClientRect();
+        
+        // Calculate new position
+        let x = e.clientX - containerRect.left - offsetX;
+        let y = e.clientY - containerRect.top - offsetY;
+        
+        // Constrain the position within the container
+        x = Math.max(0, Math.min(x, containerRect.width - boxRect.width));
+        y = Math.max(0, Math.min(y, containerRect.height - boxRect.height));
+        
+        dragBox.style.left = `${x}px`;
+        dragBox.style.top = `${y}px`;
+    });
+
+    </script>
+</body>
+</html>

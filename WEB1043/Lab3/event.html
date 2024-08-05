@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="images/hinh1.jpg" alt="" id="hinh">
+    <h2>Đăng Nhập</h2>
+    <p><input type="text" id="username" placeholder="Tài khoản" onkeyup="keyEnter(event)"></p>
+    <p><input type="password" id="pass" placeholder="Mật khẩu"></p>
+</body>
+</html>
+<script>
+    let hinh = document.getElementById('hinh');
+    // Sự kiện này onmouseoverxảy ra khi con trỏ chuột di chuyển vào một phần tử .
+    hinh.addEventListener('mouseover', function() {
+        hinh.src = 'images/hinh2.jpg';
+    });
+    hinh.addEventListener('mouseout', function() {
+        hinh.src = 'images/hinh1.jpg';
+    });
+
+    let username = document.getElementById('username');
+    // Sự kiện này xảy ra khi phần tử nhận được sự tập trung
+    username.addEventListener("focus", function() {
+        username.style.border = "none";
+        username.style.boxShadow = "0 0 10px blue";
+    });
+    // Sự kiện này xảy ra khi phần tử mất sự tập trung
+    // Khi ô nhập liệu mất sự tập trung (blur), thay đổi kiểu dáng của viền và đổ bóng trở lại trạng thái ban đầu.
+    username.addEventListener("blur", function() {
+        username.style.border = "1px solid black";
+        username.style.boxShadow = "none";
+    });
+    // Hàm keyEnter kiểm tra nếu phím nhấn có mã là 13 (phím Enter).
+    // Nếu đúng, chuyển sự tập trung sang ô nhập liệu mật khẩu (pass).
+    function keyEnter(event) {
+        if (event.keyCode === 13) {
+            document.getElementById("pass").focus();
+        }
+    }
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đổi đơn vị đất đai</title>
+</head>
+<body>
+    <input type="number" name="metvuong" id="metvuong" placeholder="Nhập diện tích (m2)">
+    <input type="button" value="Đổi đơn vị" onclick="doi()">
+    <h2>Đổi đơn vị:</h2>
+    <p>Số mét vuông:<span id="m2"></span></p>
+    <p>Số sào: <span id="sao"></span></p>
+    <p>Số hecta: <span id="ha"></span></p>
+    <p>Số mẫu: <span id="mau"></span></p>
+    <script>
+        // Input
+        function doi() {
+            let metvuong = parseFloat(document.getElementById('metvuong').value);
+            if (isNaN(metvuong) || metvuong < 0) {
+                alert("Vui lòng nhập lai số hợp lợi hoặc giá trị lớn hơn 0");
+                    return;
+            }
+                let sao = metvuong/1000;
+                let mau = metvuong/10000;
+                let ha = metvuong/10000;
+                // Output
+                document.getElementById('m2').innerHTML = metvuong;
+                document.getElementById('sao').innerHTML = sao.toFixed(2);
+                document.getElementById('ha').innerHTML = ha.toFixed(2);
+                document.getElementById('mau').innerHTML = mau.toFixed(2);
+        }
+    </script>    
+</body>
+</html>

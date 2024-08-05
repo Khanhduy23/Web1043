@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ktChuoi(chuoi) {
+                  for(let i = 0; i < chuoi.length; i++) {
+                    //Kiểm tra nếu ký tự là số (!isNaN(chuoi.charAt(i))) và không phải là dấu cách.
+                        if (!isNaN(input.charAt(i)) && input.charAt(i) !== ' ') {
+                              return true;
+                              break;
+                        }
+                  }
+                  return false;
+            }
+            const input = prompt("Nhap vao 1 chuoi bat ky: ");
+            if(ktChuoi(input)) {
+                  alert("Chuoi chua gia tri so");
+            }
+            else {
+                  alert("Chuoi khong chua gia tri so");
+            }
+    </script>
+</body>
+</html>

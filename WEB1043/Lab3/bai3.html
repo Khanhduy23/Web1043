@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        caption {
+            font-size: 50px;
+            font-weight: bold;
+            padding-top: 50px;
+            color: brown;
+        }
+        caption>span {
+            font-weight: normal;
+            float: right;
+        }
+        button {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        button:hover {
+            background-color: aliceblue;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .container {
+            margin: auto;
+        }
+        .container-main {
+            background-color: rgb(232, 250, 250);
+            width: 30%;
+            max-width: 500px;
+            min-width: 300px;
+            height: 700px;
+            margin: auto;
+            margin-top: 40px;
+            border: 2px solid navajowhite;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .btt td {
+            background-color: antiquewhite;
+            height: 70px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 24px;
+        }
+        #display {
+            font-size: 30px;
+            height: 50px;
+            margin-top: 20px;
+            background-color: white;
+            border: 2px solid navajowhite;
+            border-radius: 10px;
+            text-align: right;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-main">
+        <table class="container">
+            <caption>JavaScript Calculator<br><hr></caption>
+            <div id="display">0</div>
+            <tr>
+                <td><button onclick="enterNumber(7)">7</button></td>
+                <td><button onclick="enterNumber(8)">8</button></td>
+                <td><button onclick="enterNumber(9)">9</button></td>
+                <td><button onclick="setOperation('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="enterNumber(4)">4</button></td>
+                <td><button onclick="enterNumber(5)">5</button></td>
+                <td><button onclick="enterNumber(6)">6</button></td>
+                <td><button onclick="setOperation('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="enterNumber(1)">1</button></td>
+                <td><button onclick="enterNumber(2)">2</button></td>
+                <td><button onclick="enterNumber(3)">3</button></td>
+                <td><button onclick="setOperation('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="enterNumber(0)">0</button></td>
+                <td><button onclick="clearDisplay()">C</button></td>
+                <td><button onclick="calculateResult()">=</button></td>
+                <td><button onclick="setOperation('/')">/</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        //Khai báo các biến để lưu trữ toán hạng, phép tính, kết quả
+        let firstOperand = '';
+        let secondOperand = '';
+        let operation = '';
+        let result = '';
+        
+        //Mục đích: Nhận vào một số và thêm nó vào toán hạng tương ứng
+        function enterNumber(number) {
+            //Nếu không có số nào được chọn thì thêm toán hạng vào firstOperand
+            if (operation === '') {
+                firstOperand +=number;
+                updateDisplay(firstOperand);
+            }else{
+                secondOperand +=number;
+                updateDisplay(secondOperand);
+            }
+        }
+        //Mục đích: Thiết lập phép toán cho phép tính 
+        function setOperation(op) {
+            //Nếu firstOperand đã có giá trị, gán giá trị của op (phép toán) cho biến operation.
+            if(firstOperand !==''){
+                operation = op;
+            }            
+        }
+        //Mục đích: Cập nhật màn hình hiển thị với giá trị mới
+        function updateDisplay(value) {
+            //Nhận vào một giá trị và cập nhật phần từ HTML với id là display
+            document.getElementById('display').innerHTML = value;
+        }
+        //Mục đích: Tính toán kết quả dựa trên hai toán hạng và phép toán
+        function calculateResult() {
+            if (firstOperand !=='' && secondOperand !=='' && operation !=='') {
+                switch (operation) {
+                    case '+':
+                        result = parseFloat(firstOperand) + parseFloat(secondOperand);
+                        break;
+                        case '-':
+                        result = parseFloat(firstOperand) - parseFloat(secondOperand);
+                        break;
+                        case '*':
+                        result = parseFloat(firstOperand) * parseFloat(secondOperand);
+                        break;
+                        case '/':
+                            if (secondOperand !== '0') {
+                                result = parseFloat(firstOperand) / parseFloat(secondOperand);
+                            }else{
+                                alert("Cannot divide by zelo")
+                                clearDisplay();
+                                return;
+                            }
+                        break;
+                    default:
+                        break;
+                }
+                updateDisplay(result);
+                firstOperand = result;
+                secondOperand = '';
+                operation ='';
+            }
+        }
+        //Đặt lại toàn bộ các biến và màn hình trở về trạng thái ban đầu
+        function clearDisplay() {
+            firstOperand = '';
+            secondOperand = '';
+            operation = '';
+            result = '';
+            updateDisplay('0');
+        }
+    </script>
+</body>
+</html>

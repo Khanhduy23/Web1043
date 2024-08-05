@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        #dragable {
+            width: 100px;
+            height: 100px;
+            background-color: palegoldenrod;
+            cursor: move;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        #dragable:hover {
+            background-color: gold;
+        }
+
+        #dropable {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed black;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #dropable::after {
+            content: "Thả vào đây";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- draggable: có thể kéo được -->
+    <div id="dragable" draggable="true">Kéo tôi</div>
+    <div id="dropable"></div>
+    
+    <script>
+        let item;
+        // dragstart: Sự kiện này xảy ra khi người dùng bắt đầu kéo một phần tử.
+        document.getElementById('dragable').addEventListener('dragstart', function(event){
+            //Lưu phần từ đang kéo vào item
+            item = event.target;
+            event.target.style.opacity = '0.5';
+        });
+        //Ngăn chặn hành vi mặc định duyệt 
+        //dragover: Sự kiện này xảy ra khi phần tử kéo di chuyển qua vùng thả.
+        document.getElementById('dropable').addEventListener('dragover', function(event){
+            event.preventDefault();
+        });
+        // drop: Sự kiện này xảy ra khi người dùng thả phần tử vào vùng thả.
+        document.getElementById('dropable').addEventListener('drop', function(event){
+            //Ngăn chặn hành vi mặc định duyệt ()
+            event.preventDefault();
+            //Thêm phần tử đang kéo (item) vào phần tử mục tiêu (vùng thả, có id dropable).
+            event.target.appendChild(item);
+            item.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>

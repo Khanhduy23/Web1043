@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉ số BMI</title>
+</head>
+<body>
+    <input type="number" name="cannang" id="cannang" placeholder="Nhập cân nặng">
+    <input type="number" name="chieucao" id="chieucao" placeholder="Nhập chiều cao">
+    <input type="button" value="Tính BMI" onclick="tinh()">
+    <p>Chỉ số BMI: <span id="bmi"></span></p>
+    <script>
+        function tinh() {
+            //Lấy giá trị cân nặng và chiều cao từ input 
+            //Phương thức ParsFloat() phân tích một giá trị dưới dạng chuỗi và trả về số đầu tiên.
+           let weight = parseFloat(document.getElementById('cannang').value);
+           let height = parseFloat(document.getElementById('chieucao').value);
+           //Chuyển đổi chiều cao từ cm sang mét
+           height = height / 100;
+           //Tính chỉ số BMI
+           let bmi = weight / (height * height);
+           //Làm tròn chỉ số BMI đến chữ số thập phân thứ 2
+           bmi = bmi.toFixed(2);
+           //Hiển thị kết quả cho người dùng
+           document.getElementById('bmi').innerHTML = "BMI của bạn là: " + bmi;
+
+           //Đánh giá kết quả
+           let ketqua = " ";
+            if(bmi < 18.5){
+                ketqua ="Bạn đang thiếu cân.";
+            }else if(bmi >= 18.5 && bmi <= 25){
+                ketqua ="Bạn có cân nặng bình thường.";
+            } else if(bmi >= 25 && bmi <= 30){
+                ketqua ="Bạn hơi nặng cân rồi đó.";
+            }else{
+                ketqua="Bạn béo phì.";
+            }
+            documet.getElementById('bmi').innerHTML +=" " + ketqua;
+        }
+    </script>
+</body>
+</html>

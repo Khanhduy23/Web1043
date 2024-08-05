@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body{
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  min-height: 100vh;
+  background-color: aliceblue;
+} */
+ .logo-section{
+    margin: auto;
+    width: 230px;
+    height: 120px;
+    /* background-color: #be5656; */
+ }
+ .logo-section img{
+    width: 100%;
+ }
+.wrapper{
+    border: 2px solid gainsboro;
+    width: 450px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 30px 40px;
+    margin: auto;
+    z-index: 10;
+}
+.wrapper h1{
+    font-size: 30px;
+    text-align: center;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    /* background-color: blueviolet; */
+    margin: 30px 0;
+}
+.input-box label{
+    display: block;
+    font-size: 17px;
+    padding-left: 5px;
+    padding-bottom: 2px;
+}
+.input-box input{
+    width: 100%;
+    height: 90%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 16px;
+    /* color: aliceblue; */
+    padding: 10px 45px 10px 20px;
+}
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 100%; 
+    transform: translateY(-85%);
+    font-size: 18px;
+}
+.gioi-tinh{
+    border-radius: 5px;
+    margin: 20px 0;
+}
+.gioi-tinh fieldset , .so-thich fieldset{
+    padding: 5px;
+    border-radius: 5px;
+}
+.gioi-tinh legend {
+    padding: 2px;
+}
+.so-thich legend{
+    padding: 10px;
+}
+.quoc-tich{
+    margin: 20px 0; 
+}
+.quoc-tich input{
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+}
+.quoc-tich label , .note label{
+    font-size: 17px;
+}
+.note textarea{
+    border-radius: 5px;
+}
+.login{
+    padding: 10px;
+}
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background-color: rgb(247, 202, 0);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+footer{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: #fdfdfd;
+    border-top: 2px solid gainsboro;
+    margin-top: 20px;
+}
+.content-ft{
+    width: 50%;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    text-align: center;
+    margin-top: 25px;
+}
+.content-ft ul{
+    display: inline-block;
+}
+.thong-tin li{
+    list-style: none;
+}
+.thong-tin li a{
+    padding: 15px;
+    color: rgb(10, 58, 214);
+    text-decoration: none;
+    font-size: 14px;
+}
+.end{
+    padding-top: 10px;
+    opacity: 0.9;
+    font-size: 12px;
+}

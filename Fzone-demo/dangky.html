@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Viên</title>
+    <link rel="stylesheet" href="asset/css/stylesp.css">
+    <link rel="stylesheet" href="asset/css/styledk.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .thong-bao-loi {
+            color: red;
+            margin-top: 10px;
+        }
+        /* input[type="text"]{
+            background-image: none;
+        } */
+        #hoTen, #emailOrPhone{
+            background-image: none;
+        }
+
+    </style>
+</head>
+<body>
+    <header></header>
+    <div class="logo-section">
+        <a href="index.html"><img src="asset/img/Logo2024.png" alt="Logo"></a>
+    </div>
+    <div class="wrapper">
+        <form id="formDangKy" action="" method="post">
+            <h1>ĐĂNG KÝ THÀNH VIÊN</h1>
+            <div class="input-box">
+                <label for="hoTen">Họ và tên</label>
+                <input type="text" name="hoTen" id="hoTen">
+            </div>
+            <div class="input-box">
+                <label for="emailOrPhone">Email hoặc số điện thoại</label>
+                <input type="text" name="emailOrPhone" id="emailOrPhone">
+            </div>
+            <div class="input-box">
+                <label for="matKhau">Mật khẩu</label>
+                <input type="password" name="matKhau" id="matKhau">
+            </div>
+            <div class="input-box">
+                <label for="xacNhanMatKhau">Xác nhận mật khẩu</label>
+                <input type="password" name="xacNhanMatKhau" id="xacNhanMatKhau">
+            </div>
+            <button type="submit" class="btn">Đăng ký</button>
+            <div class="login">
+                <p>Quay lại? <a href="dangnhap.html">Đăng nhập</a></p>
+            </div>
+            <div id="thongBaoLoi" class="thong-bao-loi"></div>
+        </form>
+    </div>
+    <footer></footer>
+    <script src="asset/js/ichf.js"></script>
+    <script>
+        const form = document.querySelector('#formDangKy');
+        const thongBaoLoi = document.querySelector('#thongBaoLoi');
+
+        form.addEventListener('submit', function (event) {
+            const hoTen = document.querySelector('#hoTen').value;
+            const emailOrPhone = document.querySelector('#emailOrPhone').value;
+            const matKhau = document.querySelector('#matKhau').value;
+            const xacNhanMatKhau = document.querySelector('#xacNhanMatKhau').value;
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phonePattern = /^[0-9]{10,11}$/;
+
+            if (!hoTen || !emailOrPhone || !matKhau || !xacNhanMatKhau) {
+                thongBaoLoi.textContent = 'Vui lòng nhập đầy đủ thông tin!';
+                event.preventDefault(); // Ngăn chặn gửi form
+                return;
+            }
+
+            if (!emailPattern.test(emailOrPhone) && !phonePattern.test(emailOrPhone)) {
+                thongBaoLoi.textContent = 'Vui lòng nhập email hoặc số điện thoại hợp lệ!';
+                event.preventDefault(); // Ngăn chặn gửi form
+                return;
+            }
+
+            if (matKhau !== xacNhanMatKhau) {
+                thongBaoLoi.textContent = 'Mật khẩu và xác nhận mật khẩu không khớp!';
+                event.preventDefault(); // Ngăn chặn gửi form
+                return;
+            }
+
+            thongBaoLoi.textContent = ''; // Xóa thông báo lỗi nếu thông tin hợp lệ
+        });
+    </script>
+</body>
+</html>

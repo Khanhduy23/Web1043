@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e2e2e2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 18px;
+            color: #555;
+        }
+        input[type="datetime-local"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        #countdown {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 30px;
+            color: #ff5722; /* Màu cam sáng */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Đồng Hồ Đếm Ngược</h1>
+        <label for="endDate">Chọn ngày kết thúc:</label>
+        <input type="datetime-local" id="endDate">
+        <div id="countdown">Chưa chọn ngày</div>
+    </div>
+
+    <script>
+        function startCountdown() {
+            const endDateInput = document.getElementById('endDate');
+            const countdownElement = document.getElementById('countdown');
+            
+            const endDate = new Date(endDateInput.value);
+
+            if (isNaN(endDate.getTime())) {
+                countdownElement.innerText = 'Chưa chọn ngày hợp lệ';
+                return;
+            }
+
+            function updateCountdown() {
+                const now = new Date();
+                const timeDifference = endDate - now;
+
+                if (timeDifference <= 0) {
+                    countdownElement.innerText = 'Đếm ngược kết thúc!';
+                    clearInterval(intervalId);
+                    return;
+                }
+
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                countdownElement.innerText = `${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
+            }
+
+            const intervalId = setInterval(updateCountdown, 1000);
+        }
+
+        document.getElementById('endDate').addEventListener('change', startCountdown);
+    </script>
+</body>
+</html>
