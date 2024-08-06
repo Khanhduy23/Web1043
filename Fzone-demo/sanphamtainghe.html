@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fzone - Cửa hàng phụ kiện chơi game và công nghệ chất lượng cao.">
     <title>Fzone - Cửa hàng phụ kiện chơi game và công nghệ</title>
-    <link rel="stylesheet" href="asset/css/stylesp.css">
+    <link rel="stylesheet" href="asset/css/danhsachsptainghe.css">
+    <link rel="stylesheet" href="asset/css/header.css">
+    <link rel="stylesheet" href="asset/css/footer.css">
+    <link rel="stylesheet" href="asset/css/rootcolor.css">
     <link rel="icon" type="image/x-icon" href="asset/img/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="asset/js/scroll.js" defer></script>
@@ -30,7 +33,6 @@
                 <div class="topicsp-right">
                     <h2>Sản Phẩm Bán Chạy</h2>
                 </div>
-
                 <div class="box-big-product" id="sp">
                     <!-- Sản phẩm sẽ được thêm vào đây bằng JavaScript -->
                 </div>
@@ -38,11 +40,68 @@
         </article>
     </main>
 
-    <footer id="footer">
-        <!-- Nội dung footer sẽ được chèn bằng JavaScript nếu bạn sử dụng phương pháp include bằng JavaScript -->
+    <footer>
+        <!-- Nội dung của footer -->
     </footer>
 
     <script src="asset/js/addsptainghe.js" defer></script>
     <script src="asset/js/ichf.js" defer></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const query = queryParams.get('query')?.trim().toLowerCase() || '';
+
+    function loadProducts(products) {
+        let productHtml = '';
+
+        products.forEach(product => {
+            productHtml += `
+                <div class="box-product">
+                    <div class="topic">
+                        <h3>${product.name}</h3>
+                    </div>
+                    <div class="box-product-inline">
+                        <div class="box-product-large">
+                            <a href="#"><img src="asset/img/${product.img}" alt="${product.name}"></a>
+                            <p>${product.price}</p>
+                            <div class="product-icons">
+                                <a href="#" class="icon-heart" title="Thêm vào yêu thích"><i class="fa fa-heart"></i></a>
+                                <a href="sanphamtainghect-${product.id}.html" class="icon-info" title="Thông tin sản phẩm"><i class="fa fa-info-circle"></i></a>
+                                <a href="#" class="icon-cart" title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#" class="icon-plus" title="Cộng vào giỏ hàng"><i class="fa-solid fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('sp').innerHTML = productHtml;
+    }
+
+    if (query) {
+        fetch('asset/json/products.json')
+            .then(response => response.json())
+            .then(data => {
+                const filteredProducts = data.filter(product => 
+                    product.name.toLowerCase().includes(query)
+                );
+
+                if (filteredProducts.length > 0) {
+                    loadProducts(filteredProducts);
+                } else {
+                    document.getElementById('sp').innerHTML = '<p>Không có sản phẩm phù hợp với từ khóa tìm kiếm của bạn.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Có lỗi xảy ra khi lấy dữ liệu:', error);
+                document.getElementById('sp').innerHTML = '<p>Không thể tải sản phẩm. Vui lòng thử lại sau.</p>';
+            });
+    } else {
+        document.getElementById('sp').innerHTML = '<p>Không có từ khóa tìm kiếm.</p>';
+    }
+});
+
+    </script>
 </body>
 </html>

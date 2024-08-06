@@ -1,0 +1,89 @@
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Footer styling */
+.container-ft {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: var(--color-footer);
+    color: white;
+    margin-top: 40px;
+}
+
+.ft {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.ft h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #388fc9;
+}
+
+.ft p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.ft ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ft ul li {
+    margin-bottom: 5px;
+}
+
+.ft a {
+    text-decoration: none;
+    color: rgb(230, 222, 222);
+}
+
+.ft a:hover {
+    text-decoration: underline;
+    color: rgb(240, 182, 182);
+}
+
+.ft i {
+    font-size: 30px;
+}
+
+#btt {
+    width: 100%;
+    text-align: center;
+}
+
+#btt button {
+    width: 150px;
+    padding: 10px;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+#btt button:hover {
+    background-color: var(--color-secondary);
+}
+
+.copyright {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 12px;
+}

@@ -8,10 +8,11 @@
             <div class="hello">Giao hàng - <span>siêu nhanh</span></div>
         </div>
         <div class="input">
-            <form>
-                <input type="text" name="search" placeholder="Tìm kiếm">
+            <form id="searchForm">
+                <input type="text" id="searchQuery" name="query" placeholder="Tìm kiếm" required>
+                <button type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
-        </div>
+        </div>     
         <nav class="nav-top">
             <ul>
                 <li><a href="#"><i class="fa-solid fa-circle-info"></i> Thông tin Fzone</a></li>
@@ -30,3 +31,29 @@
         </ul>
     </nav>
 </header>
+<script>
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Ngăn gửi form theo cách mặc định
+
+    const query = document.getElementById('searchQuery').value.trim().toLowerCase();
+
+    // Kiểm tra tính hợp lệ của từ khóa
+    isValidSearchQuery(query).then(isValid => {
+        if (isValid) {
+            // Chuyển đến trang danh sách sản phẩm với từ khóa tìm kiếm
+            window.location.href = `sanphamtainghe.html?query=${encodeURIComponent(query)}`;
+        } else {
+            alert('Không có sản phẩm nào liên quan đến từ khóa tìm kiếm của bạn.');
+        }
+    });
+});
+
+function isValidSearchQuery(query) {
+    return fetch('asset/json/products.json') // Đường dẫn đến tệp JSON chứa danh sách sản phẩm
+        .then(response => response.json())
+        .then(data => {
+            return data.some(product => product.name.toLowerCase().includes(query));
+        });
+}
+
+</script>

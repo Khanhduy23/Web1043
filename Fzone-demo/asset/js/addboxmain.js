@@ -88,7 +88,6 @@ function generateImageBox(imgSrc, imgAlt, link = '#') {
         </div>
     `;
 }
-
 // Gọi hàm để load sản phẩm khi trang được tải
 // Điều này đảm bảo rằng các sản phẩm sẽ được hiển thị ngay sau khi trang được tải và sẵn sàng cho người dùng.
 document.addEventListener('DOMContentLoaded', loadProducts);

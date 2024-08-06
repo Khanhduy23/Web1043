@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = addToCartButton.getAttribute('data-product-id');
             const quantityInput = document.getElementById('quantity');
             const quantity = parseInt(quantityInput.value);
+            const colorSelect = document.getElementById('color');
+            const selectedColor = colorSelect.value;
+
+            if (!selectedColor) {
+                alert('Vui lòng chọn màu sắc trước khi thêm vào giỏ hàng.');
+                return;
+            }
 
             // Lấy thông tin sản phẩm từ DOM
             const productName = document.querySelector('.box-product-left .box-product-large img').alt;
@@ -13,7 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const productPrice = document.querySelector('.discounted-price').textContent;
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const existingProductIndex = cart.findIndex(item => item.id === productId);
+            
+            // Kiểm tra loại dữ liệu của cart
+            if (!Array.isArray(cart)) {
+                cart = [];
+            }
+
+            const existingProductIndex = cart.findIndex(item => item.id === productId && item.color === selectedColor);
 
             if (existingProductIndex >= 0) {
                 cart[existingProductIndex].quantity += quantity;
@@ -23,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: productName,
                     img: productImg,
                     price: productPrice,
-                    quantity: quantity
+                    quantity: quantity,
+                    color: selectedColor
                 };
                 
                 cart.push(product);

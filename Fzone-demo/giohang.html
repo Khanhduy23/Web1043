@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="asset/css/stylegh.css">
+    <link rel="stylesheet" href="asset/css/header.css">
+    <link rel="stylesheet" href="asset/css/footer.css">
+    <link rel="stylesheet" href="asset/css/rootcolor.css">
     <link rel="icon" type="image/x-icon" href="asset/img/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="asset/js/scroll.js"></script>
+    <style>
+        .container-ft {
+        margin-top: 250px;
+}
+    </style>
 </head>
 <body>
     <div id="sectionToScrollTo">
@@ -23,10 +31,12 @@
                     <table id="cart">
                         <thead>
                             <tr>
+                                <th>Chọn</th> <!-- Thêm cột checkbox -->
                                 <th>Số thứ tự</th>
                                 <th>Hình ảnh</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
+                                <th>Màu sắc</th> <!-- Thêm cột màu sắc -->
                                 <th>Tổng giá</th>
                                 <th>Hành động</th>
                             </tr>
@@ -36,11 +46,15 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="5" style="text-align: right;"><strong>Tổng cộng:</strong></td>
+                                <td colspan="6" style="text-align: right;"><strong>Tổng cộng:</strong></td>
                                 <td id="totalPrice">0 VNĐ</td>
+                                <td>
+                                    <button id="buyNowButton">Mua Ngay</button> <!-- Nút Mua Ngay -->
+                                </td>
                             </tr>
                         </tfoot>
-                    </table>         
+                    </table>
+                            
                 </div>
             </article>
         </main>

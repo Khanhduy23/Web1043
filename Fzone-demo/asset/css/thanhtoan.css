@@ -1,0 +1,106 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* header, footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+} */
+
+main {
+    padding: 2rem;
+}
+
+#paymentForm {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+#paymentForm h2 {
+    margin-bottom: 1rem;
+}
+
+#paymentForm .form-group {
+    margin-bottom: 1.5rem;
+}
+
+#paymentForm .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#paymentForm .form-group input[type="text"], 
+#paymentForm .form-group input[type="number"], 
+#paymentForm .form-group select, 
+#paymentForm .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#paymentForm .form-group textarea {
+    resize: vertical;
+}
+
+#paymentForm .form-group button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#paymentForm .form-group button:hover {
+    background-color: #4cae4c;
+}
+
+#paymentForm .form-group button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+#productTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+#productTable th, #productTable td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+#productTable th {
+    background-color: #f4f4f4;
+}
+
+#productTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#productTable tfoot tr {
+    font-weight: bold;
+    background-color: #f4f4f4;
+}
+
+#productTable #totalPrice {
+    font-size: 1.2rem;
+    color: #d9534f;
+}

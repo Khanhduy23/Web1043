@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fzone - Thanh toán cho đơn hàng của bạn.">
+    <meta name="keywords" content="thanh toán, đơn hàng, Fzone">
+    <title>Fzone - Thanh toán</title>
+    <link rel="stylesheet" href="asset/css/header.css">
+    <link rel="stylesheet" href="asset/css/footer.css">
+    <link rel="stylesheet" href="asset/css/rootcolor.css">
+    <link rel="stylesheet" href="asset/css/thanhtoan.css">
+    <link rel="icon" type="image/x-icon" href="asset/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="asset/js/scroll.js" defer></script>
+</head>
+
+<body>
+    <div id="container-main">
+        <header>
+            <!-- Nội dung của header -->
+        </header>
+        <main>
+            <article>
+                <div id="paymentForm">
+                    <h2>Thanh Toán Đơn Hàng</h2>
+                    
+                    <form>
+                        <div class="form-group">
+                            <label for="address">Địa chỉ nhận hàng:</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>Sản phẩm</h3>
+                            <table id="productTable">
+                                <thead>
+                                    <tr>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dữ liệu sản phẩm sẽ được đổ vào đây -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2">Tổng cộng:</td>
+                                        <td id="totalPrice">0 VNĐ</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="shipping">Đơn vị vận chuyển:</label>
+                            <select id="shipping" name="shipping">
+                                <option value="standard">Giao hàng tiêu chuẩn</option>
+                                <option value="express">Giao hàng nhanh</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Lời nhắn:</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="voucher">Chọn Voucher:</label>
+                            <select id="voucher" name="voucher">
+                                <option value="none">Không có voucher</option>
+                                <option value="10off">Giảm 10%</option>
+                                <option value="20off">Giảm 20%</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="paymentMethod">Phương thức thanh toán:</label>
+                            <select id="paymentMethod" name="paymentMethod">
+                                <option value="creditCard">Thẻ tín dụng</option>
+                                <option value="paypal">PayPal</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit">Đặt hàng</button>
+                        </div>
+                    </form>
+                </div>
+            </article>
+        </main>
+        <footer>
+            <!-- Nội dung của footer -->
+        </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Đọc thông tin sản phẩm từ localStorage
+                const selectedProducts = JSON.parse(localStorage.getItem('selectedProducts')) || [];
+                const productTableBody = document.querySelector('#productTable tbody');
+                const totalPriceElement = document.getElementById('totalPrice');
+                let totalPrice = 0;
+
+                if (selectedProducts.length > 0) {
+                    selectedProducts.forEach(function(product) {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${product.name}</td>
+                            <td>${product.quantity}</td>
+                            <td>${product.totalPrice}</td>
+                        `;
+                        productTableBody.appendChild(row);
+
+                        // Chuyển giá từ chuỗi sang số để tính tổng
+                        const price = parseFloat(product.totalPrice.replace(' VNĐ', '').replace(/,/g, ''));
+                        const quantity = parseInt(product.quantity);
+                        totalPrice += price * quantity;
+                    });
+
+                    // Hiển thị tổng tiền với định dạng VNĐ
+                    totalPriceElement.textContent = totalPrice.toLocaleString() + ' VNĐ';
+                } else {
+                    alert('Không có sản phẩm để thanh toán. Vui lòng quay lại giỏ hàng.');
+                    window.location.href = 'giohang.html'; // Hoặc đường dẫn về trang giỏ hàng
+                }
+
+                // Xóa dữ liệu khỏi localStorage sau khi sử dụng
+                localStorage.removeItem('selectedProducts');
+            });
+        </script>
+        <script src="asset/js/ichf.js" defer></script>
+    </div>
+</body>
+
+</html>

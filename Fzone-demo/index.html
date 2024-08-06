@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fzone - Cửa hàng phụ kiện chơi game và công nghệ chất lượng cao.">
     <meta name="keywords" content="phụ kiện chơi game, công nghệ, Fzone">
     <title>Fzone - Cửa hàng phụ kiện chơi game và công nghệ</title>
-    <link rel="stylesheet" href="asset/css/stylemain.css">
-    <link rel="stylesheet" href="asset/css/stylehdft.css">
+    <link rel="stylesheet" href="asset/css/header.css">
+    <link rel="stylesheet" href="asset/css/footer.css">
+    <link rel="stylesheet" href="asset/css/rootcolor.css">
+    <link rel="stylesheet" href="asset/css/main.css">
     <link rel="icon" type="image/x-icon" href="asset/img/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="asset/js/scroll.js" defer></script>
@@ -24,24 +26,24 @@
             <article>
                 <div class="container-main">
                     <div class="banner">
-                        <div class="arrow left-arrow">&#10094;</div>
+                        <div class="arrow left-arrow" aria-label="Previous">&#10094;</div>
                         <div class="banner-images">
-                            <img src="asset/img/background1.jpg" alt="Image 1">
-                            <img src="asset/img/background2.jpg" alt="Image 2">
-                            <img src="asset/img/background3.jpg" alt="Image 3">
-                            <img src="asset/img/background4.jpg" alt="Image 4">
-                            <img src="asset/img/background5.jpg" alt="Image 5">
-                            <img src="asset/img/background1.jpg" alt="Image 1">
-                            <img src="asset/img/background2.jpg" alt="Image 2">
-                            <img src="asset/img/background3.jpg" alt="Image 3">
-                            <img src="asset/img/background4.jpg" alt="Image 4">
-                            <img src="asset/img/background5.jpg" alt="Image 5">
+                            <img src="asset/img/background1.jpg" alt="Ảnh nền 1">
+                            <img src="asset/img/background2.jpg" alt="Ảnh nền 2">
+                            <img src="asset/img/background3.jpg" alt="Ảnh nền 3">
+                            <img src="asset/img/background4.jpg" alt="Ảnh nền 4">
+                            <img src="asset/img/background5.jpg" alt="Ảnh nền 5">
+                            <img src="asset/img/background1.jpg" alt="Ảnh nền 1">
+                            <img src="asset/img/background2.jpg" alt="Ảnh nền 2">
+                            <img src="asset/img/background3.jpg" alt="Ảnh nền 3">
+                            <img src="asset/img/background4.jpg" alt="Ảnh nền 4">
+                            <img src="asset/img/background5.jpg" alt="Ảnh nền 5">
                             <!-- Thêm nhiều ảnh hơn nếu cần -->
                         </div>
-                        <div class="arrow right-arrow">&#10095;</div>
+                        <div class="arrow right-arrow" aria-label="Next">&#10095;</div>
                     </div>
                     <div class="box-big-product" id="box-main">
-                        <!-- Sản phẩm lớn sẽ được thêm vào đây -->
+                        <!-- Sản phẩmsẽ được thêm vào đây -->
                     </div>
                 </div>
             </article>
@@ -51,7 +53,21 @@
         </footer>
         <script src="asset/js/addboxmain.js" defer></script>
         <script src="asset/js/ichf.js" defer></script>
-        <script src="asset/js/banner.js"></script>
+        <script src="asset/js/banner.js" defer></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const searchForm = document.getElementById('searchForm');
+                if (searchForm) {
+                    searchForm.addEventListener('submit', function(event) {
+                        event.preventDefault();
+                    
+                        const query = document.getElementById('searchQuery').value.trim().toLowerCase();
+                    
+                        window.location.href = `sanphamtainghe.html?query=${encodeURIComponent(query)}`;
+                    });
+                }
+            });
+        </script>
     </div>
 </body>
 </html>

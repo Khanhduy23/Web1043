@@ -1,0 +1,237 @@
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Define primary color variables */
+:root {
+    --background-icon: rgb(66, 66, 66);
+    --btn-bg-color: #eea86e;
+    --btn-hover-color: #2d74a3;
+    --box-shadow-light: rgba(0, 0, 0, 0.1);
+    --box-shadow-dark: rgba(0, 0, 0, 0.2);
+}
+
+/* Box Product Styling */
+.box-product {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.box-product:hover {
+    transform: scale(1.05);
+}
+
+.box-product img {
+    display: block;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    height: auto;
+}
+
+.box-product:hover img {
+    transform: scale(1.01);
+}
+
+.product-icons {
+    position: absolute;
+    top: 100px;
+    right: 65px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.box-product:hover .product-icons {
+    opacity: 1;
+}
+
+.product-icons a {
+    color: #fff;
+    margin: 0 5px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.product-icons .icon-heart,
+.product-icons .icon-cart,
+.product-icons .icon-info,
+.product-icons .icon-plus {
+    background: var(--background-icon);
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.icon-cart:hover,
+.icon-heart:hover,
+.icon-info:hover,
+.icon-plus:hover {
+    background-color: #ebb112;
+}
+
+.container-main {
+    width: 100%;
+    min-height: 1500px;
+    padding: 0 20px; /* Ensure consistent padding */
+}
+
+.banner {
+    width: 98%;
+    height: auto;
+    margin: auto;
+    background-color: #cccccc; /* Consider adjusting this color */
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.topicsp-left {
+    margin: 10px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.topicsp-right {
+    position: absolute;
+    right: 0;
+    top: 640px;
+    padding-right: 88px;
+}
+
+.box-big-product {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.box-product {
+    width: calc(25% - 10px);
+    background-color: white;
+    margin: 5px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgb(180, 177, 171);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.topic h3 {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    z-index: 100;
+}
+
+.box-product-inline,
+.box-product-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.box-product-inline {
+    width: 100%;
+    height: 300px;
+    flex-wrap: wrap;
+}
+
+.box-product-large {
+    width: calc(100% - 20px);
+    height: 300px;
+    margin: 5px;
+    flex-direction: column;
+    position: relative;
+}
+
+.box-product-large img {
+    max-width: 80%;
+    max-height: 90%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.box-product-large p {
+    text-align: center;
+    font-size: 22px;
+    color: rgb(241, 161, 39);
+    margin: 0;
+    padding: 5px 0;
+}
+
+.box-product-large button {
+    padding: 3px;
+    outline: none;
+    border: 1px solid rgb(172, 155, 155);
+    background-color: #f8f0f0;
+    box-shadow: 0 0 5px rgb(170, 167, 167);
+    border-radius: 5px;
+}
+
+.box-product-large button:hover {
+    background-color: #e7e3e3;
+}
+
+.box-product-large span {
+    font-size: 14px;
+    padding: 10px;
+    color: #1a5e8b;
+}
+
+.btn-detail {
+    display: inline-block;
+    padding: 7px 8px;
+    font-size: 16px;
+    color: white;
+    background-color: var(--btn-bg-color); /* Use variable */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 8px var(--box-shadow-light); /* Use variable */
+}
+
+.btn-detail:hover {
+    transform: scale(1.05);
+    background-color: var(--btn-hover-color); /* Use variable */
+    box-shadow: 0 4px 8px var(--box-shadow-dark); /* Use variable */
+}
+
+/* Responsive Design */
+@media (max-width: 1490px) {
+    .topicsp-right {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .box-product {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .box-product {
+        width: calc(100% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .box-product {
+        margin: 5px 0;
+    }
+}

@@ -1,0 +1,10 @@
+:root {
+    --background-header: rgb(19, 25, 33);
+    --background-nav: rgb(35, 47, 62);
+    --color-primary: #1a5e8b;
+    --color-secondary: #2d74a3;
+    --color-hover: orangered;
+    --color-footer: #333;
+    --color-text-light: #999;
+    --color-text-dark: #333;
+}

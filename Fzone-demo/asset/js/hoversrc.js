@@ -1,3 +1,4 @@
+// JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     const smallImages = document.querySelectorAll('.box-product-small a');
     const largeImage = document.getElementById('largeImage');

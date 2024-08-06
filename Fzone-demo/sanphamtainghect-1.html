@@ -6,6 +6,9 @@
     <meta name="description" content="Fzone - Cửa hàng phụ kiện chơi game và công nghệ chất lượng cao.">
     <title>Fzone - Cửa hàng phụ kiện chơi game và công nghệ</title>
     <link rel="stylesheet" href="asset/css/stylectsp.css">
+    <link rel="stylesheet" href="asset/css/header.css">
+    <link rel="stylesheet" href="asset/css/footer.css">
+    <link rel="stylesheet" href="asset/css/rootcolor.css">
     <link rel="icon" type="image/x-icon" href="asset/img/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="asset/js/scroll.js"></script>
@@ -27,9 +30,10 @@
                     <div class="box-product-content">
                         <div class="box-product-left">
                             <div class="box-product-large">
-                                <a href="#"><img id="largeImage" src="asset/img/tainghe1.webp" alt="Tai nghe"></a>
+                                <a href="#"><img id="largeImage" src="asset/img/tainghe1p0.jpg" alt="Tai nghe"></a>
                             </div>
                             <div class="box-product-small">
+                                <a href="#" data-src="asset/img/tainghe1p0.jpg"><img src="asset/img/tainghe1p0.jpg" alt="Màu "></a>
                                 <a href="#" data-src="asset/img/tainghe1p1.jpg"><img src="asset/img/tainghe1p1.jpg" alt="Màu 1"></a>
                                 <a href="#" data-src="asset/img/tainghe1p2.jpg"><img src="asset/img/tainghe1p2.jpg" alt="Màu 2"></a>
                                 <a href="#" data-src="asset/img/tainghe1p3.jpg"><img src="asset/img/tainghe1p3.jpg" alt="Màu 3"></a>
@@ -42,11 +46,28 @@
                         <div class="box-product-right">
                             <h4>Thông Tin Sản Phẩm</h4>
                             <p><strong>Giá Gốc:</strong> <span class="original-price">1.900.000₫</span></p>
-                            <p><strong>Giá Giảm:</strong> <span class="discounted-price">1.490.000₫</span></p>
+                            <p><strong>Giá Khuyến mãi:</strong> <span class="discounted-price">1.490.000₫</span></p>
+                            <div id="flashSale">
+                                <h4>Khuyến Mãi Flash Sale</h4>
+                                <!-- <p id="flashSaleTimer">Thời gian còn lại: <span id="time"></span></p> -->
+                                <p id="sale-status" style="color: rgb(255, 255, 255); font-weight: bold;"></p>
+                            </div>
+                            <script src="asset/js/sale.js"></script>                            
                             <div>
                                 <label for="quantity">Số lượng:</label>
                                 <input type="number" id="quantity" name="quantity" min="1" value="1" style="width: 60px; margin-right: 10px;">
                                 <button class="add-to-cart-button" data-product-id="1">Thêm vào giỏ hàng</button>
+                                <div class="color-selection">
+                                    <label for="color">Màu sắc:</label>
+                                    <select id="color" name="color">
+                                        <option value="">Chọn màu</option>
+                                        <option value="red">Đỏ</option>
+                                        <option value="blue">Xanh</option>
+                                        <option value="green">Xanh lá</option>
+                                        <option value="black">Đen</option>
+                                    </select>
+                                </div>
+                                
                             </div>
                             <a href="#" class="view-reviews">Xem đánh giá</a>
                             <p><strong>Mô Tả:</strong> Tai nghe chất lượng cao dành cho game thủ, tích hợp chức năng chống ồn và âm thanh vòm.</p>
