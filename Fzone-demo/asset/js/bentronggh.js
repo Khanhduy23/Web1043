@@ -19,24 +19,28 @@ document.addEventListener('DOMContentLoaded', function() {
             cartTableBody.appendChild(row);
         });
 
-        updateTotalPrice(cart);
+        updateSummary(cart);
     }
 
-    function updateTotalPrice(cart) {
-        const totalPriceElement = document.getElementById('totalPrice');
+    function updateSummary(cart) {
+        const totalItemsElement = document.querySelector('#summary th');
+        const summaryTotalPriceElement = document.getElementById('totalSummary');
+        
+        let totalItems = 0;
         let total = 0;
 
-        const selectedCheckboxes = document.querySelectorAll('.select-item:checked');
+        const selectedCheckboxes = document.querySelectorAll('#cart tbody input[type="checkbox"]:checked');
         const selectedProductIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.getAttribute('data-product-id'));
 
         cart.forEach(item => {
             if (selectedProductIds.includes(item.id)) {
-                const price = parseFloat(item.price.replace(/\D/g, ''));
-                total += price * item.quantity;
+                totalItems += item.quantity;
+                total += parseFloat(item.price.replace(/\D/g, '')) * item.quantity;
             }
         });
 
-        totalPriceElement.textContent = `${total.toLocaleString()} VNĐ`;
+        totalItemsElement.textContent = `Tổng thanh toán (${totalItems} Sản phẩm)`;
+        summaryTotalPriceElement.textContent = `${total.toLocaleString()} VNĐ`;
     }
 
     document.getElementById('buyNowButton').addEventListener('click', function() {
@@ -45,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('#cart tbody input[type="checkbox"]:checked').forEach(function(checkbox) {
             const row = checkbox.closest('tr');
             const product = {
+                id: checkbox.getAttribute('data-product-id'),
                 name: row.querySelector('td:nth-child(4)').textContent.trim(),
                 quantity: row.querySelector('td:nth-child(5) input').value.trim(),
                 color: row.querySelector('td:nth-child(6)').textContent.trim(),
@@ -55,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (selectedProducts.length > 0) {
             localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
-            window.location.href = 'payment.html';
+            window.location.href = 'payment.html'; // Chuyển hướng đến trang thanh toán
         } else {
             alert('Vui lòng chọn sản phẩm để mua.');
         }
@@ -83,8 +88,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateCart();
             }
         } else if (event.target.classList.contains('select-item')) {
-            updateTotalPrice(JSON.parse(localStorage.getItem('cart')) || []);
+            updateSummary(JSON.parse(localStorage.getItem('cart')) || []);
         }
+    });
+
+    document.getElementById('selectAll').addEventListener('change', function() {
+        const isChecked = this.checked;
+        document.querySelectorAll('#cart tbody input[type="checkbox"]').forEach(checkbox => checkbox.checked = isChecked);
+        updateSummary(JSON.parse(localStorage.getItem('cart')) || []);
     });
 
     updateCart();

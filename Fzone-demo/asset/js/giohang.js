@@ -26,13 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 cart = [];
             }
 
-            const existingProductIndex = cart.findIndex(item => item.id === productId && item.color === selectedColor);
+            // Kết hợp id và màu sắc để tạo id duy nhất
+            const productIdWithColor = `${productId}-${selectedColor}`;
+            const existingProductIndex = cart.findIndex(item => item.id === productIdWithColor);
 
             if (existingProductIndex >= 0) {
                 cart[existingProductIndex].quantity += quantity;
             } else {
                 const product = {
-                    id: productId,
+                    id: productIdWithColor,
                     name: productName,
                     img: productImg,
                     price: productPrice,

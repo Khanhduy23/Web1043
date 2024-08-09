@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng</title>
-    <link rel="stylesheet" href="asset/css/stylegh.css">
+    <link rel="stylesheet" href="asset/css/giohang.css">
     <link rel="stylesheet" href="asset/css/header.css">
     <link rel="stylesheet" href="asset/css/footer.css">
     <link rel="stylesheet" href="asset/css/rootcolor.css">
@@ -13,8 +13,26 @@
     <script src="asset/js/scroll.js"></script>
     <style>
         .container-ft {
-        margin-top: 250px;
-}
+            margin-top: 250px;
+        }
+        /* New table styling */
+        #summary {
+            width: 70%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: 15%;
+        }
+        #summary th, #summary td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        #summary th {
+            background-color: #f2f2f2;
+        }
+        #summary input[type="checkbox"] {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -28,6 +46,7 @@
         <main>
             <article>
                 <div class="container-main">
+                    <!-- Bảng giỏ hàng -->
                     <table id="cart">
                         <thead>
                             <tr>
@@ -46,15 +65,28 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6" style="text-align: right;"><strong>Tổng cộng:</strong></td>
-                                <td id="totalPrice">0 VNĐ</td>
-                                <td>
-                                    <button id="buyNowButton">Mua Ngay</button> <!-- Nút Mua Ngay -->
+                                <td colspan="8">
+                                    <!-- Thêm bảng tổng kết -->
+                                    <table id="summary">
+                                        <thead>
+                                            <tr>
+                                                <th>Chọn tất cả</th>
+                                                <th>Tổng thanh toán (0 Sản phẩm)</th>
+                                                <th>Hành động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="checkbox" id="selectAll"> Chọn tất cả</td>
+                                                <td id="totalSummary">0 VNĐ</td>
+                                                <td><button id="buyNowButton">Mua Ngay</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </td>
                             </tr>
                         </tfoot>
                     </table>
-                            
                 </div>
             </article>
         </main>

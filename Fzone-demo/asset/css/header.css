@@ -104,7 +104,7 @@ input[type="text"]:focus {
 }
 
 .nav-top ul li a:hover, .nav-section ul li a:hover {
-    background-color: #d6d6d6;
+    background-color: #3d4865;
     color: rgb(255, 123, 0);
     font-weight: 600;
 }
